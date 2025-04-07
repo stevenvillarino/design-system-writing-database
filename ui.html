@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Writing On The Wall</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: Inter, sans-serif;
+            padding: 24px;
+            color: #333;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .platform-selector {
+            margin-bottom: 24px;
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            font-size: 16px;
+            max-width: 100%;
+        }
+        
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .platform-item {
+            padding: 16px;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+            background-color: white;
+        }
+        
+        .platform-item:hover {
+            background-color: #f5f5f5;
+            border-color: #d0d0d0;
+        }
+        
+        .platform-item.selected {
+            background-color: #18A0FB;
+            color: white;
+            border-color: #18A0FB;
+        }
+        
+        .scan-button {
+            width: 100%;
+            padding: 16px 32px;
+            background-color: #18A0FB;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 24px;
+            transition: background-color 0.2s;
+            max-width: 100%;
+        }
+        
+        .scan-button:hover {
+            background-color: #0D8DE3;
+        }
+        
+        .scan-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .terms-list {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 24px;
+            padding-right: 16px;
+            min-height: 0;
+        }
+        
+        .term-item {
+            padding: 16px;
+            margin: 12px 0;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .term-item:hover {
+            background-color: #f5f5f5;
+            border-color: #d0d0d0;
+        }
+        
+        .term-text {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            font-size: 16px;
+        }
+        
+        .term-explanation {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        
+        .error {
+            padding: 12px;
+            background-color: #fce8e6;
+            color: #d93025;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        
+        .status {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f5f5f5;
+            border-radius: 6px;
+        }
+        
+        .validation-section {
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .approved {
+            background-color: #e6f4ea;
+            color: #1e7e34;
+        }
+        
+        .not-approved {
+            background-color: #fce8e6;
+            color: #d93025;
+        }
+        
+        .suggestions {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 4px;
+        }
+        
+        .suggestion-item {
+            padding: 12px 16px;
+            margin: 8px 0;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .suggestion-item:hover {
+            background-color: #e9ecef;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .invalid-terms {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fce8e6;
+            border-radius: 6px;
+            display: none;
+        }
+
+        .invalid-terms h3 {
+            color: #d93025;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .invalid-term-item {
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="status" class="status">Loading...</div>
+    
+    <div class="platform-grid" id="platformGrid">
+        <div class="platform-item selected" data-platform="">All Platforms</div>
+    </div>
+
+    <button id="scanButton" class="scan-button">Scan Selected Frame</button>
+    
+    <div id="error" class="error" style="display: none;"></div>
+    
+    <div class="terms-list" id="termsList">
+        <div class="loading">Loading terms...</div>
+    </div>
+
+    <div id="invalidTerms" class="invalid-terms">
+        <h3>Invalid Terms Found</h3>
+        <div id="invalidTermsList"></div>
+    </div>
+
+    <div id="validationSection" class="validation-section" style="display: none;">
+        <h3>Term Validation</h3>
+        <div id="validationResult"></div>
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+
+    <script>
+        function displayTerms(terms) {
+            const termsList = document.getElementById('termsList');
+            termsList.innerHTML = '';
+            
+            if (!terms || terms.length === 0) {
+                termsList.innerHTML = '<div class="empty-state">No terms found</div>';
+                return;
+            }
+            
+            terms.forEach(term => {
+                const termElement = document.createElement('div');
+                termElement.className = 'term-item';
+                
+                const termText = document.createElement('div');
+                termText.className = 'term-text';
+                termText.textContent = term.term;
+                
+                const termExplanation = document.createElement('div');
+                termExplanation.className = 'term-explanation';
+                termExplanation.textContent = term.explanation || '';
+                
+                termElement.appendChild(termText);
+                termElement.appendChild(termExplanation);
+                
+                termElement.onclick = () => {
+                    parent.postMessage({ pluginMessage: { type: 'create-text', text: term.term } }, '*');
+                };
+                
+                termsList.appendChild(termElement);
+            });
+        }
+
+        function displayInvalidTerms(terms) {
+            const invalidTermsSection = document.getElementById('invalidTerms');
+            const invalidTermsList = document.getElementById('invalidTermsList');
+            
+            if (!terms || terms.length === 0) {
+                invalidTermsSection.style.display = 'none';
+                return;
+            }
+            
+            invalidTermsList.innerHTML = '';
+            terms.forEach(term => {
+                const termElement = document.createElement('div');
+                termElement.className = 'invalid-term-item';
+                termElement.textContent = term;
+                invalidTermsList.appendChild(termElement);
+            });
+            
+            invalidTermsSection.style.display = 'block';
+        }
+
+        // Listen for messages from the plugin code
+        window.onmessage = async (event) => {
+            const message = event.data.pluginMessage;
+            const statusEl = document.getElementById('status');
+            const errorEl = document.getElementById('error');
+            
+            if (message.type === 'error') {
+                errorEl.textContent = message.message;
+                errorEl.style.display = 'block';
+                statusEl.textContent = 'Error occurred';
+                displayTerms([]); // Clear terms list
+            } else if (message.type === 'update-terms') {
+                statusEl.textContent = `Loaded ${message.terms.length} terms`;
+                errorEl.style.display = 'none';
+                displayTerms(message.terms);
+            } else if (message.type === 'invalid-terms-found') {
+                displayInvalidTerms(message.terms);
+            } else if (message.type === 'update-platforms') {
+                updatePlatformGrid(message.platforms);
+            }
+        };
+
+        function updatePlatformGrid(platforms) {
+            const platformGrid = document.getElementById('platformGrid');
+            const existingItems = platformGrid.querySelectorAll('.platform-item');
+            
+            // Keep the "All Platforms" option
+            const allPlatformsItem = existingItems[0];
+            platformGrid.innerHTML = '';
+            platformGrid.appendChild(allPlatformsItem);
+            
+            // Add new platform items
+            platforms.forEach(platform => {
+                const platformItem = document.createElement('div');
+                platformItem.className = 'platform-item';
+                platformItem.dataset.platform = platform;
+                platformItem.textContent = platform;
+                platformGrid.appendChild(platformItem);
+            });
+        }
+
+        // Platform selector change handler
+        document.getElementById('platformGrid').addEventListener('click', (e) => {
+            const platformItem = e.target.closest('.platform-item');
+            if (!platformItem) return;
+            
+            // Remove selected class from all items
+            document.querySelectorAll('.platform-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked item
+            platformItem.classList.add('selected');
+            
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = 'Filtering terms...';
+            parent.postMessage({ pluginMessage: { type: 'platform-changed', platform: platformItem.dataset.platform } }, '*');
+        });
+
+        // Scan button handler
+        document.getElementById('scanButton').addEventListener('click', () => {
+            parent.postMessage({ pluginMessage: { type: 'scan-frame' } }, '*');
+        });
+    </script>
+</body>
+</html> 
