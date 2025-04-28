@@ -34,10 +34,12 @@
         }
         
         .platform-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            display: flex;
+            flex-direction: row;
             gap: 12px;
             margin-bottom: 24px;
+            width: 100%;
+            flex-wrap: wrap;
         }
         
         .platform-item {
@@ -313,12 +315,10 @@
         function updatePlatformGrid(platforms) {
             const platformGrid = document.getElementById('platformGrid');
             const existingItems = platformGrid.querySelectorAll('.platform-item');
-            
             // Keep the "All Platforms" option
             const allPlatformsItem = existingItems[0];
             platformGrid.innerHTML = '';
             platformGrid.appendChild(allPlatformsItem);
-            
             // Add new platform items
             platforms.forEach(platform => {
                 const platformItem = document.createElement('div');
