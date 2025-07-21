@@ -1,22 +1,45 @@
-// Airtable configuration
-const AIRTABLE_API_KEY = 'patzUH6BjxUkKN0bA.6101cd9a5cc8bf17d091b0bee3b4a30c689de06f8ba998f8bb5d93e37653c87c';
-const AIRTABLE_BASE_ID = 'appnRYSC7jy8V0Rtx';
-const AIRTABLE_TABLE_NAME = 'Common Terms';
+// Database configurations
+const DATABASES = {
+    commonTerms: {
+        apiKey: 'patzUH6BjxUkKN0bA.6101cd9a5cc8bf17d091b0bee3b4a30c689de06f8ba998f8bb5d93e37653c87c',
+        baseId: 'appnRYSC7jy8V0Rtx',
+        tableName: 'Common Terms',
+        displayName: 'UX Writing Database',
+        fields: {
+            term: 'Content',
+            platform: 'Platform',
+            explanation: 'Examples + Explanation'
+        }
+    },
+    sportsOnly: {
+        apiKey: 'patWFLhwYW5LzMCuj.19660ab8da307b18041d3ba32385b511dc17d63b2ac042dbb7c875ec0d46297d',
+        baseId: 'appcm9Wc6ykKgXxZG',
+        tableName: 'Sports Only',
+        displayName: 'Zone Tiles - Sports',
+        fields: {
+            term: 'Zone Name',
+            platform: 'Platform',
+            explanation: 'Examples + Explanation'
+        }
+    }
+};
 
 // State management
+let currentDatabase = 'commonTerms';
 let currentPlatform = '';
 let terms = [];
 
-// Fetch terms from Airtable
+// Fetch terms from selected database
 async function fetchTerms(platform = '') {
     try {
-        const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE_NAME)}`;
+        const dbConfig = DATABASES[currentDatabase];
+        const url = `https://api.airtable.com/v0/${dbConfig.baseId}/${encodeURIComponent(dbConfig.tableName)}`;
         console.log('Fetching from URL:', url);
         
         const response = await fetch(url, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+                'Authorization': `Bearer ${dbConfig.apiKey}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
@@ -43,17 +66,18 @@ async function fetchTerms(platform = '') {
         
         terms = data.records.map(record => ({
             id: record.id,
-            term: record.fields.Content,
-            platform: record.fields.Platform,
+            term: record.fields[dbConfig.fields.term],
+            platform: record.fields[dbConfig.fields.platform],
             approved: true,
-            explanation: record.fields['Examples + Explanation']
+            explanation: record.fields[dbConfig.fields.explanation]
         }));
         
         // Get unique platforms and send to UI
         const uniquePlatforms = [...new Set(terms.map(term => term.platform))].filter(Boolean);
         figma.ui.postMessage({ 
             type: 'update-platforms', 
-            platforms: uniquePlatforms 
+            platforms: uniquePlatforms,
+            currentDatabase: DATABASES[currentDatabase].displayName
         });
         
         console.log('Processed terms:', terms);
@@ -143,6 +167,159 @@ function getAllTextNodesInFrame(frame) {
     } catch (error) {
         console.error('Error in getAllTextNodesInFrame:', error);
         return [];
+    }
+}
+
+// Function to find template placeholders in text nodes
+function findTemplatePlaceholders(frame) {
+    try {
+        const textNodes = getAllTextNodesInFrame(frame);
+        const placeholders = [];
+        
+        textNodes.forEach(node => {
+            const text = node.characters;
+            const nodeName = node.name;
+            const dbConfig = DATABASES[currentDatabase];
+            const fieldName = dbConfig.fields.term;
+            const placeholder = `{{${fieldName}}}`;
+            
+            // Check both text content and layer name for placeholder
+            if (text.includes(placeholder) || nodeName.includes(placeholder)) {
+                placeholders.push({
+                    node: node,
+                    placeholder: placeholder,
+                    originalText: text,
+                    isNamePlaceholder: nodeName.includes(placeholder) && !text.includes(placeholder)
+                });
+            }
+        });
+        
+        return placeholders;
+    } catch (error) {
+        console.error('Error finding template placeholders:', error);
+        return [];
+    }
+}
+
+// Function to get all unique fonts used in a frame
+function getAllFontsInFrame(frame) {
+    try {
+        const fonts = new Set();
+        const textNodes = getAllTextNodesInFrame(frame);
+        
+        textNodes.forEach(node => {
+            // Get the font name from the text node
+            if (node.fontName && typeof node.fontName === 'object') {
+                fonts.add(`${node.fontName.family}|${node.fontName.style}`);
+            }
+        });
+        
+        return Array.from(fonts).map(fontString => {
+            const [family, style] = fontString.split('|');
+            return { family, style };
+        });
+    } catch (error) {
+        console.error('Error getting fonts in frame:', error);
+        return [];
+    }
+}
+
+// Function to create mocks from template
+async function createMocksFromTemplate() {
+    try {
+        console.log('Starting mock creation...');
+        const selection = figma.currentPage.selection;
+        
+        if (selection.length !== 1) {
+            figma.notify('Please select a single frame or component to use as template', { error: true });
+            return;
+        }
+        
+        const template = selection[0];
+        console.log('Template selected:', template.name);
+        
+        // Find placeholders in the template
+        const placeholders = findTemplatePlaceholders(template);
+        console.log('Found placeholders:', placeholders.length);
+        
+        if (placeholders.length === 0) {
+            const dbConfig = DATABASES[currentDatabase];
+            const fieldName = dbConfig.fields.term;
+            figma.notify(`No {{${fieldName}}} placeholders found in template`, { error: true });
+            return;
+        }
+        
+        // Get all fonts used in the template and load them
+        console.log('Loading fonts...');
+        const fontsInTemplate = getAllFontsInFrame(template);
+        console.log('Fonts found:', fontsInTemplate);
+        
+        // Load all fonts used in the template
+        for (const font of fontsInTemplate) {
+            try {
+                console.log(`Loading font: ${font.family} ${font.style}`);
+                await figma.loadFontAsync(font);
+            } catch (fontError) {
+                console.warn(`Failed to load font ${font.family} ${font.style}:`, fontError);
+                // Try to load a fallback font
+                try {
+                    await figma.loadFontAsync({ family: "Inter", style: "Regular" });
+                } catch (fallbackError) {
+                    console.error('Failed to load fallback font:', fallbackError);
+                }
+            }
+        }
+        
+        // Get filtered terms based on current platform
+        const filteredTerms = filterTermsByPlatform(currentPlatform);
+        
+        if (filteredTerms.length === 0) {
+            figma.notify('No terms available for mock creation', { error: true });
+            return;
+        }
+        
+        console.log(`Creating ${filteredTerms.length} mocks...`);
+        
+        // Create mocks for each term
+        const mocks = [];
+        filteredTerms.forEach((term, index) => {
+            const mock = template.clone();
+            mock.name = `${template.name} - ${term.term}`;
+            
+            // Position mocks in a grid
+            const spacing = 20;
+            const cols = Math.ceil(Math.sqrt(filteredTerms.length));
+            const row = Math.floor(index / cols);
+            const col = index % cols;
+            
+            mock.x = template.x + (col * (template.width + spacing));
+            mock.y = template.y + (row * (template.height + spacing));
+            
+            // Replace placeholders in the mock
+            const mockPlaceholders = findTemplatePlaceholders(mock);
+            mockPlaceholders.forEach(({ node, placeholder, originalText, isNamePlaceholder }) => {
+                if (isNamePlaceholder) {
+                    // If placeholder is in layer name, set the text content to the term
+                    node.characters = term.term;
+                } else {
+                    // If placeholder is in text content, replace it
+                    node.characters = originalText.replace(placeholder, term.term);
+                }
+            });
+            
+            figma.currentPage.appendChild(mock);
+            mocks.push(mock);
+        });
+        
+        // Select all created mocks
+        figma.currentPage.selection = mocks;
+        figma.viewport.scrollAndZoomIntoView(mocks);
+        
+        figma.notify(`Created ${mocks.length} mocks successfully!`, { timeout: 3000 });
+        
+    } catch (error) {
+        console.error('Error creating mocks:', error);
+        figma.notify(`Error creating mocks: ${error.message}`, { error: true });
     }
 }
 
@@ -298,7 +475,7 @@ function updateValidationSection(term) {
 }
 
 // Main plugin code
-figma.showUI(__html__, { width: 400, height: 600 });
+figma.showUI(__html__, { width: 450, height: 800 });
 
 // Handle messages from UI
 figma.ui.onmessage = async (msg) => {
@@ -306,10 +483,17 @@ figma.ui.onmessage = async (msg) => {
         currentPlatform = msg.platform;
         const filteredTerms = filterTermsByPlatform(currentPlatform);
         updateTermsList(filteredTerms);
+    } else if (msg.type === 'database-changed') {
+        currentDatabase = msg.database;
+        currentPlatform = '';
+        const fetchedTerms = await fetchTerms();
+        updateTermsList(fetchedTerms);
     } else if (msg.type === 'create-text') {
         await createTextNode(msg.text);
     } else if (msg.type === 'scan-frame') {
         await scanFrameForInvalidTerms();
+    } else if (msg.type === 'create-mocks') {
+        await createMocksFromTemplate();
     }
 };
 

@@ -1,9 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Writing On The Wall</title>
+    <title>Speed Rail</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 224 71.4% 4.1%;
+            --card: 0 0% 100%;
+            --card-foreground: 224 71.4% 4.1%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 224 71.4% 4.1%;
+            --primary: 220.9 39.3% 11%;
+            --primary-foreground: 210 20% 98%;
+            --secondary: 220 14.3% 95.9%;
+            --secondary-foreground: 220.9 39.3% 11%;
+            --muted: 220 14.3% 95.9%;
+            --muted-foreground: 220 8.9% 46.1%;
+            --accent: 220 14.3% 95.9%;
+            --accent-foreground: 220.9 39.3% 11%;
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 210 20% 98%;
+            --border: 220 13% 91%;
+            --input: 220 13% 91%;
+            --ring: 224 71.4% 4.1%;
+            --radius: 0.5rem;
+        }
+
+        * {
+            border-color: hsl(var(--border));
+        }
+
         html, body {
             width: 100%;
             height: 100%;
@@ -13,210 +42,312 @@
         }
 
         body {
-            font-family: Inter, sans-serif;
+            font-family: "Inter", sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
             padding: 24px;
-            color: #333;
             width: 100%;
             height: 100%;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            tab-size: 4;
         }
         
-        .platform-selector {
-            margin-bottom: 24px;
+        .select {
+            display: flex;
+            height: 2.5rem;
             width: 100%;
-            padding: 16px;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
-            font-size: 16px;
-            max-width: 100%;
+            align-items: center;
+            justify-content: between;
+            border-radius: calc(var(--radius) - 2px);
+            border: 1px solid hsl(var(--input));
+            background-color: hsl(var(--background));
+            padding: 0 12px;
+            font-size: 14px;
+            margin-bottom: 24px;
+            transition: colors;
+        }
+        
+        .select:focus {
+            outline: 2px solid hsl(var(--ring));
+            outline-offset: 2px;
+        }
+        
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-weight: 500;
+            transition: colors;
+            border: none;
+            cursor: pointer;
+            height: 2.5rem;
+            padding: 0 16px;
+            width: 100%;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .button-help {
+            font-size: 12px;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 16px;
+            padding: 8px 12px;
+            background: hsl(var(--muted));
+            border-radius: calc(var(--radius) - 2px);
+            border: 1px solid hsl(var(--border));
+            text-align: center;
+        }
+        
+        .button-primary {
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+        }
+        
+        .button-primary:hover {
+            background-color: hsl(var(--primary) / 0.9);
+        }
+        
+        .button-secondary {
+            background-color: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+        }
+        
+        .button-secondary:hover {
+            background-color: hsl(var(--secondary) / 0.8);
+        }
+        
+        .button-success {
+            background-color: hsl(142 76% 36%);
+            color: hsl(var(--primary-foreground));
+            margin-bottom: 24px;
+        }
+        
+        .button-success:hover {
+            background-color: hsl(142 76% 36% / 0.9);
+        }
+        
+        .button:disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        
+        .card {
+            border-radius: var(--radius);
+            border: 1px solid hsl(var(--border));
+            background-color: hsl(var(--card));
+            color: hsl(var(--card-foreground));
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            border-radius: calc(var(--radius) - 2px);
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 500;
+            transition: colors;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        
+        .badge-default {
+            border-color: hsl(var(--border));
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+        }
+        
+        .badge-default:hover {
+            background-color: hsl(var(--accent));
+        }
+        
+        .badge-primary {
+            border-color: transparent;
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
         }
         
         .platform-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 8px;
             margin-bottom: 24px;
-        }
-        
-        .platform-item {
-            padding: 16px;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s;
-            background-color: white;
-        }
-        
-        .platform-item:hover {
-            background-color: #f5f5f5;
-            border-color: #d0d0d0;
-        }
-        
-        .platform-item.selected {
-            background-color: #18A0FB;
-            color: white;
-            border-color: #18A0FB;
-        }
-        
-        .scan-button {
-            width: 100%;
-            padding: 16px 32px;
-            background-color: #18A0FB;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-bottom: 24px;
-            transition: background-color 0.2s;
-            max-width: 100%;
-        }
-        
-        .scan-button:hover {
-            background-color: #0D8DE3;
-        }
-        
-        .scan-button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
         }
         
         .terms-list {
             flex: 1;
             overflow-y: auto;
             margin-bottom: 24px;
-            padding-right: 16px;
+            padding-right: 8px;
             min-height: 0;
         }
         
         .term-item {
             padding: 16px;
-            margin: 12px 0;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
+            margin: 8px 0;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
+            border-radius: var(--radius);
+            border: 1px solid hsl(var(--border));
+            background-color: hsl(var(--card));
         }
         
         .term-item:hover {
-            background-color: #f5f5f5;
-            border-color: #d0d0d0;
+            background-color: hsl(var(--accent));
         }
         
         .term-text {
-            font-weight: 500;
-            margin-bottom: 8px;
-            color: #1a1a1a;
-            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: hsl(var(--foreground));
+            font-size: 14px;
         }
         
         .term-explanation {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-        }
-        
-        .error {
-            padding: 12px;
-            background-color: #fce8e6;
-            color: #d93025;
-            border-radius: 6px;
-            margin: 10px 0;
+            font-size: 12px;
+            color: hsl(var(--muted-foreground));
+            line-height: 1.4;
         }
         
         .status {
+            font-size: 12px;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 16px;
+            padding: 8px 12px;
+            background: hsl(var(--muted));
+            border-radius: calc(var(--radius) - 2px);
+            border: 1px solid hsl(var(--border));
+        }
+        
+        .loading, .empty-state {
+            text-align: center;
+            padding: 24px;
+            color: hsl(var(--muted-foreground));
+            font-style: italic;
+        }
+        
+        .error {
+            padding: 12px 16px;
+            background-color: hsl(var(--destructive) / 0.1);
+            color: hsl(var(--destructive));
+            border-radius: var(--radius);
+            margin: 12px 0;
+            border: 1px solid hsl(var(--destructive) / 0.2);
             font-size: 14px;
-            color: #666;
-            margin-bottom: 15px;
-            padding: 12px;
-            background: #f5f5f5;
-            border-radius: 6px;
         }
         
         .validation-section {
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-            background-color: #f8f9fa;
+            padding: 16px;
+            border-radius: var(--radius);
+            margin-top: 16px;
+            background-color: hsl(var(--muted));
+            border: 1px solid hsl(var(--border));
         }
         
         .approved {
-            background-color: #e6f4ea;
-            color: #1e7e34;
+            background-color: hsl(142 76% 36% / 0.1);
+            color: hsl(142 76% 36%);
+            border-color: hsl(142 76% 36% / 0.2);
         }
         
         .not-approved {
-            background-color: #fce8e6;
-            color: #d93025;
+            background-color: hsl(var(--destructive) / 0.1);
+            color: hsl(var(--destructive));
+            border-color: hsl(var(--destructive) / 0.2);
         }
         
         .suggestions {
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 4px;
+            margin-top: 12px;
+            padding: 12px;
+            background-color: hsl(var(--background));
+            border-radius: calc(var(--radius) - 2px);
+            border: 1px solid hsl(var(--border));
         }
         
         .suggestion-item {
-            padding: 12px 16px;
-            margin: 8px 0;
-            border: 1px solid #e5e5e5;
-            border-radius: 6px;
+            padding: 8px 12px;
+            margin: 4px 0;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px;
+            border-radius: calc(var(--radius) - 4px);
+            transition: background-color 0.2s ease;
         }
         
         .suggestion-item:hover {
-            background-color: #e9ecef;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-            font-style: italic;
+            background-color: hsl(var(--accent));
         }
 
         .invalid-terms {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #fce8e6;
-            border-radius: 6px;
+            margin-top: 16px;
+            padding: 16px;
+            background-color: hsl(var(--destructive) / 0.1);
+            border-radius: var(--radius);
+            border: 1px solid hsl(var(--destructive) / 0.2);
             display: none;
         }
 
         .invalid-terms h3 {
-            color: #d93025;
+            color: hsl(var(--destructive));
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .invalid-term-item {
-            padding: 12px;
-            background: white;
-            border-radius: 6px;
-            margin: 8px 0;
-            font-size: 14px;
+            padding: 8px 12px;
+            background: hsl(var(--background));
+            border-radius: calc(var(--radius) - 2px);
+            margin: 6px 0;
+            font-size: 12px;
+            border: 1px solid hsl(var(--border));
+        }
+
+        /* Scrollbar styling for webkit browsers */
+        .terms-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .terms-list::-webkit-scrollbar-track {
+            background: hsl(var(--muted));
+        }
+
+        .terms-list::-webkit-scrollbar-thumb {
+            background: hsl(var(--muted-foreground) / 0.3);
+            border-radius: 3px;
+        }
+
+        .terms-list::-webkit-scrollbar-thumb:hover {
+            background: hsl(var(--muted-foreground) / 0.5);
         }
     </style>
 </head>
 <body>
     <div id="status" class="status">Loading...</div>
     
+    <div class="database-selector" style="margin-bottom: 24px;">
+        <select id="databaseSelect" class="select">
+            <option value="commonTerms">UX Writing Database</option>
+            <option value="sportsOnly">Zone Tiles - Sports</option>
+        </select>
+    </div>
+    
     <div class="platform-grid" id="platformGrid">
-        <div class="platform-item selected" data-platform="">All Platforms</div>
+        <div class="badge badge-primary selected" data-platform="">All Platforms</div>
     </div>
 
-    <button id="scanButton" class="scan-button">Scan Selected Frame</button>
+    <button id="scanButton" class="button button-primary">🔍 Scan Frame for Invalid Terms</button>
+    <div class="button-help">Select a frame and click to highlight text that doesn't match your database</div>
+    
+    <button id="mockButton" class="button button-success">🚀 Generate Mocks from Template</button>
+    <div id="mockButtonHelp" class="button-help">Select a template with {{Content}} placeholders to create multiple variations</div>
     
     <div id="error" class="error" style="display: none;"></div>
     
@@ -307,49 +438,100 @@
                 displayInvalidTerms(message.terms);
             } else if (message.type === 'update-platforms') {
                 updatePlatformGrid(message.platforms);
+                updateMockButtonHelp();
+                if (message.currentDatabase) {
+                    statusEl.textContent = `${message.currentDatabase} - Loaded ${message.terms?.length || 0} terms`;
+                }
             }
         };
 
         function updatePlatformGrid(platforms) {
             const platformGrid = document.getElementById('platformGrid');
-            const existingItems = platformGrid.querySelectorAll('.platform-item');
+            const databaseSelect = document.getElementById('databaseSelect');
+            const currentDatabase = databaseSelect.value;
             
-            // Keep the "All Platforms" option
-            const allPlatformsItem = existingItems[0];
             platformGrid.innerHTML = '';
-            platformGrid.appendChild(allPlatformsItem);
             
-            // Add new platform items
-            platforms.forEach(platform => {
+            // Only show "All Platforms" for databases that have platform filtering
+            if (currentDatabase !== 'sportsOnly') {
+                const allPlatformsItem = document.createElement('div');
+                allPlatformsItem.className = 'badge badge-primary selected';
+                allPlatformsItem.dataset.platform = '';
+                allPlatformsItem.textContent = 'All Platforms';
+                platformGrid.appendChild(allPlatformsItem);
+            }
+            
+            // Add platform items
+            platforms.forEach((platform, index) => {
                 const platformItem = document.createElement('div');
-                platformItem.className = 'platform-item';
+                platformItem.className = `badge badge-default ${currentDatabase === 'sportsOnly' && index === 0 ? 'badge-primary selected' : ''}`;
                 platformItem.dataset.platform = platform;
                 platformItem.textContent = platform;
                 platformGrid.appendChild(platformItem);
             });
         }
 
+        // Update mock button help text based on current database
+        function updateMockButtonHelp() {
+            const databaseSelect = document.getElementById('databaseSelect');
+            const mockButtonHelp = document.getElementById('mockButtonHelp');
+            const currentDatabase = databaseSelect.value;
+            
+            if (currentDatabase === 'sportsOnly') {
+                mockButtonHelp.textContent = 'Select a template with {{Zone Name}} placeholders to create multiple variations';
+            } else {
+                mockButtonHelp.textContent = 'Select a template with {{Content}} placeholders to create multiple variations';
+            }
+        }
+
         // Platform selector change handler
         document.getElementById('platformGrid').addEventListener('click', (e) => {
-            const platformItem = e.target.closest('.platform-item');
+            const platformItem = e.target.closest('.badge');
             if (!platformItem) return;
             
             // Remove selected class from all items
-            document.querySelectorAll('.platform-item').forEach(item => {
-                item.classList.remove('selected');
+            document.querySelectorAll('.badge').forEach(item => {
+                item.classList.remove('selected', 'badge-primary');
+                item.classList.add('badge-default');
             });
             
             // Add selected class to clicked item
-            platformItem.classList.add('selected');
+            platformItem.classList.add('selected', 'badge-primary');
+            platformItem.classList.remove('badge-default');
             
             const statusEl = document.getElementById('status');
             statusEl.textContent = 'Filtering terms...';
             parent.postMessage({ pluginMessage: { type: 'platform-changed', platform: platformItem.dataset.platform } }, '*');
         });
 
+        // Database selector change handler
+        document.getElementById('databaseSelect').addEventListener('change', (e) => {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = 'Switching database...';
+            
+            // Reset platform selection to "All Platforms"
+            document.querySelectorAll('.badge').forEach(item => {
+                item.classList.remove('selected', 'badge-primary');
+                item.classList.add('badge-default');
+            });
+            const allPlatformsItem = document.querySelector('.badge[data-platform=""]');
+            if (allPlatformsItem) {
+                allPlatformsItem.classList.add('selected', 'badge-primary');
+                allPlatformsItem.classList.remove('badge-default');
+            }
+            
+            updateMockButtonHelp();
+            parent.postMessage({ pluginMessage: { type: 'database-changed', database: e.target.value } }, '*');
+        });
+
         // Scan button handler
         document.getElementById('scanButton').addEventListener('click', () => {
             parent.postMessage({ pluginMessage: { type: 'scan-frame' } }, '*');
+        });
+
+        // Mock button handler
+        document.getElementById('mockButton').addEventListener('click', () => {
+            parent.postMessage({ pluginMessage: { type: 'create-mocks' } }, '*');
         });
     </script>
 </body>
