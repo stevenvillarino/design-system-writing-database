@@ -1,0 +1,142 @@
+Content,Platform,Examples + Explanation
+Get Started,iOS,Primary call-to-action for onboarding flows. Use on first screen to begin user journey. Friendly and inviting tone.
+Get Started,Android,Primary call-to-action for onboarding flows. Use on first screen to begin user journey. Friendly and inviting tone.
+Get Started,Web,Primary call-to-action for onboarding flows. Use on first screen to begin user journey. Friendly and inviting tone.
+Continue,iOS,Use for multi-step flows to proceed to next step. Neutral tone that doesn't oversell.
+Continue,Android,Use for multi-step flows to proceed to next step. Neutral tone that doesn't oversell.
+Continue,Web,Use for multi-step flows to proceed to next step. Neutral tone that doesn't oversell.
+Sign In,iOS,Use for authentication screens. Preferred over 'Log In' or 'Login'. Matches brand voice guidelines.
+Sign In,Android,Use for authentication screens. Preferred over 'Log In' or 'Login'. Matches brand voice guidelines.
+Sign In,Web,Use for authentication screens. Preferred over 'Log In' or 'Login'. Matches brand voice guidelines.
+Sign Up,iOS,Use for new account creation. Preferred over 'Register' or 'Create Account'. Keep it simple.
+Sign Up,Android,Use for new account creation. Preferred over 'Register' or 'Create Account'. Keep it simple.
+Sign Up,Web,Use for new account creation. Preferred over 'Register' or 'Create Account'. Keep it simple.
+Start Free Trial,iOS,Primary CTA for subscription flows. Emphasizes no cost commitment. Use in marketing and conversion flows.
+Start Free Trial,Android,Primary CTA for subscription flows. Emphasizes no cost commitment. Use in marketing and conversion flows.
+Start Free Trial,Web,Primary CTA for subscription flows. Emphasizes no cost commitment. Use in marketing and conversion flows.
+Choose Plan,iOS,Use in subscription selection screens. Clear and direct action verb.
+Choose Plan,Android,Use in subscription selection screens. Clear and direct action verb.
+Choose Plan,Web,Use in subscription selection screens. Clear and direct action verb.
+Subscribe Now,iOS,Final commitment button in subscription flow. Use after plan details are shown.
+Subscribe Now,Android,Final commitment button in subscription flow. Use after plan details are shown.
+Subscribe Now,Web,Final commitment button in subscription flow. Use after plan details are shown.
+Confirm Subscription,iOS,Use on payment confirmation screen before final purchase. Provides clarity and reduces abandonment.
+Confirm Subscription,Android,Use on payment confirmation screen before final purchase. Provides clarity and reduces abandonment.
+Confirm Subscription,Web,Use on payment confirmation screen before final purchase. Provides clarity and reduces abandonment.
+Manage Subscription,iOS,Use in account settings for users to access subscription details. Neutral and informative tone.
+Manage Subscription,Android,Use in account settings for users to access subscription details. Neutral and informative tone.
+Manage Subscription,Web,Use in account settings for users to access subscription details. Neutral and informative tone.
+Cancel Subscription,iOS,Destructive action. Use clear language without dark patterns. Place in subscription management section.
+Cancel Subscription,Android,Destructive action. Use clear language without dark patterns. Place in subscription management section.
+Cancel Subscription,Web,Destructive action. Use clear language without dark patterns. Place in subscription management section.
+Update Payment Method,iOS,Use in billing section when payment needs attention. Clear call-to-action for fixing payment issues.
+Update Payment Method,Android,Use in billing section when payment needs attention. Clear call-to-action for fixing payment issues.
+Update Payment Method,Web,Use in billing section when payment needs attention. Clear call-to-action for fixing payment issues.
+Renews on [date],iOS,Use to display next billing date. Format: 'Renews on Jan 15' with actual date. Shows transparency.
+Renews on [date],Android,Use to display next billing date. Format: 'Renews on Jan 15' with actual date. Shows transparency.
+Renews on [date],Web,Use to display next billing date. Format: 'Renews on Jan 15' with actual date. Shows transparency.
+Your trial ends on [date],iOS,Use during trial period to show expiration. Format: 'Your trial ends on Jan 15' with actual date.
+Your trial ends on [date],Android,Use during trial period to show expiration. Format: 'Your trial ends on Jan 15' with actual date.
+Your trial ends on [date],Web,Use during trial period to show expiration. Format: 'Your trial ends on Jan 15' with actual date.
+Try for Free,iOS,Secondary CTA for trial offers. Less committal than 'Start Free Trial'. Use in cards or promotional areas.
+Try for Free,Android,Secondary CTA for trial offers. Less committal than 'Start Free Trial'. Use in cards or promotional areas.
+Try for Free,Web,Secondary CTA for trial offers. Less committal than 'Start Free Trial'. Use in cards or promotional areas.
+Save & Continue,iOS,Use when saving settings or profile information before moving to next step. Combines two actions clearly.
+Save & Continue,Android,Use when saving settings or profile information before moving to next step. Combines two actions clearly.
+Save & Continue,Web,Use when saving settings or profile information before moving to next step. Combines two actions clearly.
+Save Changes,iOS,Use in settings and profile screens. Explicit save action. Place prominently after form edits.
+Save Changes,Android,Use in settings and profile screens. Explicit save action. Place prominently after form edits.
+Save Changes,Web,Use in settings and profile screens. Explicit save action. Place prominently after form edits.
+Cancel,iOS,Use as secondary button to exit or dismiss without saving. Always pair with a primary action.
+Cancel,Android,Use as secondary button to exit or dismiss without saving. Always pair with a primary action.
+Cancel,Web,Use as secondary button to exit or dismiss without saving. Always pair with a primary action.
+Go Back,iOS,Use in navigation to return to previous screen. Preferred over just 'Back' for clarity.
+Go Back,Android,Use in navigation to return to previous screen. Preferred over just 'Back' for clarity.
+Go Back,Web,Use in navigation to return to previous screen. Preferred over just 'Back' for clarity.
+Delete Account,iOS,Destructive action in account settings. Use clear language without euphemisms. Confirm before executing.
+Delete Account,Android,Destructive action in account settings. Use clear language without euphemisms. Confirm before executing.
+Delete Account,Web,Destructive action in account settings. Use clear language without euphemisms. Confirm before executing.
+Something went wrong,iOS,Generic error message headline. Always follow with specific explanation and recovery action.
+Something went wrong,Android,Generic error message headline. Always follow with specific explanation and recovery action.
+Something went wrong,Web,Generic error message headline. Always follow with specific explanation and recovery action.
+Try Again,iOS,Use as recovery action after errors. Gives user clear path forward without technical jargon.
+Try Again,Android,Use as recovery action after errors. Gives user clear path forward without technical jargon.
+Try Again,Web,Use as recovery action after errors. Gives user clear path forward without technical jargon.
+Payment Failed,iOS,Error headline for payment issues. Follow with reason (card declined, insufficient funds) and fix action.
+Payment Failed,Android,Error headline for payment issues. Follow with reason (card declined, insufficient funds) and fix action.
+Payment Failed,Web,Error headline for payment issues. Follow with reason (card declined, insufficient funds) and fix action.
+Update Card,iOS,CTA when payment method needs updating. Short and action-oriented for error states.
+Update Card,Android,CTA when payment method needs updating. Short and action-oriented for error states.
+Update Card,Web,CTA when payment method needs updating. Short and action-oriented for error states.
+Contact Support,iOS,Use when user needs help. Links to support channels. Place in settings and error states.
+Contact Support,Android,Use when user needs help. Links to support channels. Place in settings and error states.
+Contact Support,Web,Use when user needs help. Links to support channels. Place in settings and error states.
+Learn More,iOS,Secondary action to get additional information. Use as text link or secondary button. Non-committal.
+Learn More,Android,Secondary action to get additional information. Use as text link or secondary button. Non-committal.
+Learn More,Web,Secondary action to get additional information. Use as text link or secondary button. Non-committal.
+View Details,iOS,Use to drill into more information. Common in lists and cards. Neutral and descriptive.
+View Details,Android,Use to drill into more information. Common in lists and cards. Neutral and descriptive.
+View Details,Web,Use to drill into more information. Common in lists and cards. Neutral and descriptive.
+Done,iOS,Use to complete a task or flow. Positive completion signal. Common in iOS modals and sheets.
+Done,Android,Use to complete a task or flow. Positive completion signal. Common in modal dialogs.
+Done,Web,Use to complete a task or flow. Positive completion signal. Common in modal dialogs.
+Close,iOS,Use to dismiss overlays and modals. Neutral action that doesn't save changes.
+Close,Android,Use to dismiss overlays and modals. Neutral action that doesn't save changes.
+Close,Web,Use to dismiss overlays and modals. Neutral action that doesn't save changes.
+Skip,iOS,Optional action in onboarding flows. Allows users to bypass non-essential steps. Use sparingly.
+Skip,Android,Optional action in onboarding flows. Allows users to bypass non-essential steps. Use sparingly.
+Skip,Web,Optional action in onboarding flows. Allows users to bypass non-essential steps. Use sparingly.
+Skip for Now,iOS,More explicit version of 'Skip'. Use when action can be done later. Less dismissive than 'Skip'.
+Skip for Now,Android,More explicit version of 'Skip'. Use when action can be done later. Less dismissive than 'Skip'.
+Skip for Now,Web,More explicit version of 'Skip'. Use when action can be done later. Less dismissive than 'Skip'.
+Not Now,iOS,Polite decline for permission requests or prompts. Allows re-prompting later. Better than 'No' alone.
+Not Now,Android,Polite decline for permission requests or prompts. Allows re-prompting later. Better than 'No' alone.
+Not Now,Web,Polite decline for permission requests or prompts. Allows re-prompting later. Better than 'No' alone.
+Maybe Later,iOS,Another option for deferring actions. Slightly softer than 'Not Now'. Use in non-critical prompts.
+Maybe Later,Android,Another option for deferring actions. Slightly softer than 'Not Now'. Use in non-critical prompts.
+Maybe Later,Web,Another option for deferring actions. Slightly softer than 'Not Now'. Use in non-critical prompts.
+Allow,iOS,Use for permission requests (notifications, location, camera). Positive action. Pair with 'Don't Allow'.
+Allow,Android,Use for permission requests (notifications, location, camera). Positive action. Pair with 'Don't Allow'.
+Don't Allow,iOS,Decline permission requests. Clear and respectful of user choice. Alternative to plain 'No'.
+Don't Allow,Android,Decline permission requests. Clear and respectful of user choice. Alternative to plain 'No'.
+Enable Notifications,iOS,Specific call-to-action for notification permissions. More descriptive than generic 'Allow'.
+Enable Notifications,Android,Specific call-to-action for notification permissions. More descriptive than generic 'Allow'.
+Enable Notifications,Web,Specific call-to-action for notification permissions. More descriptive than generic 'Allow'.
+You're all set!,iOS,Success message after completing setup or onboarding. Celebratory and positive tone.
+You're all set!,Android,Success message after completing setup or onboarding. Celebratory and positive tone.
+You're all set!,Web,Success message after completing setup or onboarding. Celebratory and positive tone.
+Welcome to [app name],iOS,Onboarding headline. Replace [app name] with actual product name. Warm and inviting.
+Welcome to [app name],Android,Onboarding headline. Replace [app name] with actual product name. Warm and inviting.
+Welcome to [app name],Web,Onboarding headline. Replace [app name] with actual product name. Warm and inviting.
+Subscription Confirmed,iOS,Success headline after completing subscription purchase. Clear confirmation of transaction.
+Subscription Confirmed,Android,Success headline after completing subscription purchase. Clear confirmation of transaction.
+Subscription Confirmed,Web,Success headline after completing subscription purchase. Clear confirmation of transaction.
+Thank you for subscribing,iOS,Success message body text. Appreciative and welcoming tone for new subscribers.
+Thank you for subscribing,Android,Success message body text. Appreciative and welcoming tone for new subscribers.
+Thank you for subscribing,Web,Success message body text. Appreciative and welcoming tone for new subscribers.
+Your subscription is active,iOS,Status indicator for subscription state. Use in account settings and profile areas.
+Your subscription is active,Android,Status indicator for subscription state. Use in account settings and profile areas.
+Your subscription is active,Web,Status indicator for subscription state. Use in account settings and profile areas.
+Unlock Premium Features,iOS,Paywall CTA. Emphasizes value and access. Use in freemium conversion flows.
+Unlock Premium Features,Android,Paywall CTA. Emphasizes value and access. Use in freemium conversion flows.
+Unlock Premium Features,Web,Paywall CTA. Emphasizes value and access. Use in freemium conversion flows.
+Upgrade Now,iOS,CTA to move from free to paid plan. Direct and action-oriented. Use in upsell moments.
+Upgrade Now,Android,CTA to move from free to paid plan. Direct and action-oriented. Use in upsell moments.
+Upgrade Now,Web,CTA to move from free to paid plan. Direct and action-oriented. Use in upsell moments.
+Downgrade Plan,iOS,Use in subscription management to move to lower tier. Neutral tone without negative language.
+Downgrade Plan,Android,Use in subscription management to move to lower tier. Neutral tone without negative language.
+Downgrade Plan,Web,Use in subscription management to move to lower tier. Neutral tone without negative language.
+Change Plan,iOS,Neutral option to modify subscription tier. Use when up/down direction isn't specified yet.
+Change Plan,Android,Neutral option to modify subscription tier. Use when up/down direction isn't specified yet.
+Change Plan,Web,Neutral option to modify subscription tier. Use when up/down direction isn't specified yet.
+Restore Purchase,iOS,iOS-specific. Use to restore previously purchased subscriptions. Important for App Store compliance.
+Restore Purchase,Android,Android-specific. Use to restore previously purchased subscriptions. Important for Play Store compliance.
+View Billing History,iOS,Use to access past invoices and payment records. Clear and descriptive action.
+View Billing History,Android,Use to access past invoices and payment records. Clear and descriptive action.
+View Billing History,Web,Use to access past invoices and payment records. Clear and descriptive action.
+Download Invoice,iOS,Action to get receipt/invoice PDF. Use in billing history screens.
+Download Invoice,Android,Action to get receipt/invoice PDF. Use in billing history screens.
+Download Invoice,Web,Action to get receipt/invoice PDF. Use in billing history screens.
+Resubscribe,iOS,Use when user previously canceled. Encourages return. More friendly than 'Subscribe Again'.
+Resubscribe,Android,Use when user previously canceled. Encourages return. More friendly than 'Subscribe Again'.
+Resubscribe,Web,Use when user previously canceled. Encourages return. More friendly than 'Subscribe Again'.
