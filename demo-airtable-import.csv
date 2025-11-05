@@ -140,3 +140,419 @@ Download Invoice,Web,Action to get receipt/invoice PDF. Use in billing history s
 Resubscribe,iOS,Use when user previously canceled. Encourages return. More friendly than 'Subscribe Again'.
 Resubscribe,Android,Use when user previously canceled. Encourages return. More friendly than 'Subscribe Again'.
 Resubscribe,Web,Use when user previously canceled. Encourages return. More friendly than 'Subscribe Again'.
+Submit,iOS,Generic form submission. Use when 'Save' or specific action words don't apply. Clear and direct.
+Submit,Android,Generic form submission. Use when 'Save' or specific action words don't apply. Clear and direct.
+Submit,Web,Generic form submission. Use when 'Save' or specific action words don't apply. Clear and direct.
+Send,iOS,Use for messaging and email actions. Action-oriented and immediate. Common in communication features.
+Send,Android,Use for messaging and email actions. Action-oriented and immediate. Common in communication features.
+Send,Web,Use for messaging and email actions. Action-oriented and immediate. Common in communication features.
+Share,iOS,Use for social sharing or sending content to others. Universal action across platforms.
+Share,Android,Use for social sharing or sending content to others. Universal action across platforms.
+Share,Web,Use for social sharing or sending content to others. Universal action across platforms.
+Copy,iOS,Copy content to clipboard. Use with clear feedback (toast/snackbar) that action succeeded.
+Copy,Android,Copy content to clipboard. Use with clear feedback (toast/snackbar) that action succeeded.
+Copy,Web,Copy content to clipboard. Use with clear feedback (toast/snackbar) that action succeeded.
+Copied!,iOS,Success feedback after copy action. Brief and confirmatory. Show in toast for 2-3 seconds.
+Copied!,Android,Success feedback after copy action. Brief and confirmatory. Show in snackbar for 2-3 seconds.
+Copied!,Web,Success feedback after copy action. Brief and confirmatory. Show in toast for 2-3 seconds.
+Download,iOS,Action to save content locally. Use for files, images, documents. Clear and familiar.
+Download,Android,Action to save content locally. Use for files, images, documents. Clear and familiar.
+Download,Web,Action to save content locally. Use for files, images, documents. Clear and familiar.
+Upload,iOS,Action to add files from device. Pair with file type limitations (images, PDFs, etc).
+Upload,Android,Action to add files from device. Pair with file type limitations (images, PDFs, etc).
+Upload,Web,Action to add files from device. Pair with file type limitations (images, PDFs, etc).
+Edit,iOS,Modify existing content. Use in lists and detail views. Clear call-to-action for updates.
+Edit,Android,Modify existing content. Use in lists and detail views. Clear call-to-action for updates.
+Edit,Web,Modify existing content. Use in lists and detail views. Clear call-to-action for updates.
+Delete,iOS,Destructive action. Always confirm before executing. Use clear language without euphemisms.
+Delete,Android,Destructive action. Always confirm before executing. Use clear language without euphemisms.
+Delete,Web,Destructive action. Always confirm before executing. Use clear language without euphemisms.
+Remove,iOS,Less permanent than Delete. Use for removing items from lists or collections (not permanent deletion).
+Remove,Android,Less permanent than Delete. Use for removing items from lists or collections (not permanent deletion).
+Remove,Web,Less permanent than Delete. Use for removing items from lists or collections (not permanent deletion).
+Add,iOS,Create or append new items. Use in lists, collections, forms. Positive and constructive action.
+Add,Android,Create or append new items. Use in lists, collections, forms. Positive and constructive action.
+Add,Web,Create or append new items. Use in lists, collections, forms. Positive and constructive action.
+Create,iOS,Start new item or project. More formal than 'Add'. Use for significant creation actions.
+Create,Android,Start new item or project. More formal than 'Add'. Use for significant creation actions.
+Create,Web,Start new item or project. More formal than 'Add'. Use for significant creation actions.
+New,iOS,Prefix for creation actions. Example: 'New Message', 'New Document'. Short and versatile.
+New,Android,Prefix for creation actions. Example: 'New Message', 'New Document'. Short and versatile.
+New,Web,Prefix for creation actions. Example: 'New Message', 'New Document'. Short and versatile.
+Search,iOS,Action or placeholder for search inputs. Universal and instantly recognizable.
+Search,Android,Action or placeholder for search inputs. Universal and instantly recognizable.
+Search,Web,Action or placeholder for search inputs. Universal and instantly recognizable.
+Filter,iOS,Refine results by criteria. Use in lists and search. Pair with clear filter indicators.
+Filter,Android,Refine results by criteria. Use in lists and search. Pair with clear filter indicators.
+Filter,Web,Refine results by criteria. Use in lists and search. Pair with clear filter indicators.
+Sort,iOS,Reorder content by criteria. Use in lists with multiple sort options (date, name, price).
+Sort,Android,Reorder content by criteria. Use in lists with multiple sort options (date, name, price).
+Sort,Web,Reorder content by criteria. Use in lists with multiple sort options (date, name, price).
+Apply,iOS,Confirm selections (filters, settings). Use after making choices to execute changes.
+Apply,Android,Confirm selections (filters, settings). Use after making choices to execute changes.
+Apply,Web,Confirm selections (filters, settings). Use after making choices to execute changes.
+Clear,iOS,Reset selections or filters. Use to return to default state. Neutral recovery action.
+Clear,Android,Reset selections or filters. Use to return to default state. Neutral recovery action.
+Clear,Web,Reset selections or filters. Use to return to default state. Neutral recovery action.
+Reset,iOS,Return to original state or defaults. More comprehensive than 'Clear'. Use in settings.
+Reset,Android,Return to original state or defaults. More comprehensive than 'Clear'. Use in settings.
+Reset,Web,Return to original state or defaults. More comprehensive than 'Clear'. Use in settings.
+Undo,iOS,Reverse last action. Provide immediately after destructive actions. Builds user confidence.
+Undo,Android,Reverse last action. Provide immediately after destructive actions. Builds user confidence.
+Undo,Web,Reverse last action. Provide immediately after destructive actions. Builds user confidence.
+Redo,iOS,Reapply undone action. Use in editing contexts. Pair with Undo functionality.
+Redo,Android,Reapply undone action. Use in editing contexts. Pair with Undo functionality.
+Redo,Web,Reapply undone action. Use in editing contexts. Pair with Undo functionality.
+Refresh,iOS,Reload current content or page. Use pull-to-refresh or explicit button. Clear update action.
+Refresh,Android,Reload current content or page. Use pull-to-refresh or explicit button. Clear update action.
+Refresh,Web,Reload current content or page. Use refresh button or keyboard shortcut. Clear update action.
+Loading,iOS,Progress indicator text. Use with spinner or skeleton screens. Keep user informed.
+Loading,Android,Progress indicator text. Use with spinner or skeleton screens. Keep user informed.
+Loading,Web,Progress indicator text. Use with spinner or skeleton screens. Keep user informed.
+Loading...,iOS,Alternative with ellipsis. Suggests ongoing process. Use with animated indicators.
+Loading...,Android,Alternative with ellipsis. Suggests ongoing process. Use with animated indicators.
+Loading...,Web,Alternative with ellipsis. Suggests ongoing process. Use with animated indicators.
+Saving,iOS,Feedback during save operations. Use with progress indicators. Reassures user.
+Saving,Android,Feedback during save operations. Use with progress indicators. Reassures user.
+Saving,Web,Feedback during save operations. Use with progress indicators. Reassures user.
+Saved,iOS,Success confirmation after save. Brief feedback (2-3 seconds). Positive reinforcement.
+Saved,Android,Success confirmation after save. Brief feedback (2-3 seconds). Positive reinforcement.
+Saved,Web,Success confirmation after save. Brief feedback (2-3 seconds). Positive reinforcement.
+Success!,iOS,Generic success message. Use with checkmark icon. Celebrate completed actions.
+Success!,Android,Generic success message. Use with checkmark icon. Celebrate completed actions.
+Success!,Web,Generic success message. Use with checkmark icon. Celebrate completed actions.
+Error,iOS,Problem indicator. Always follow with specific explanation and recovery path.
+Error,Android,Problem indicator. Always follow with specific explanation and recovery path.
+Error,Web,Problem indicator. Always follow with specific explanation and recovery path.
+Warning,iOS,Caution indicator for non-critical issues. Use amber/yellow color. Provide context.
+Warning,Android,Caution indicator for non-critical issues. Use amber/yellow color. Provide context.
+Warning,Web,Caution indicator for non-critical issues. Use amber/yellow color. Provide context.
+Info,iOS,Informational message. Neutral tone. Use for helpful tips and non-urgent notifications.
+Info,Android,Informational message. Neutral tone. Use for helpful tips and non-urgent notifications.
+Info,Web,Informational message. Neutral tone. Use for helpful tips and non-urgent notifications.
+Note,iOS,Additional information prefix. Example: 'Note: Changes take effect immediately'.
+Note,Android,Additional information prefix. Example: 'Note: Changes take effect immediately'.
+Note,Web,Additional information prefix. Example: 'Note: Changes take effect immediately'.
+Tip,iOS,Helpful suggestion. Use in empty states and onboarding. Friendly educational tone.
+Tip,Android,Helpful suggestion. Use in empty states and onboarding. Friendly educational tone.
+Tip,Web,Helpful suggestion. Use in empty states and onboarding. Friendly educational tone.
+Help,iOS,Access to support and documentation. Use in navigation and contextual help icons.
+Help,Android,Access to support and documentation. Use in navigation and contextual help icons.
+Help,Web,Access to support and documentation. Use in navigation and contextual help icons.
+Settings,iOS,App configuration area. Common in navigation. Universal and immediately recognized.
+Settings,Android,App configuration area. Common in navigation. Universal and immediately recognized.
+Settings,Web,App configuration area. Common in navigation. Universal and immediately recognized.
+Profile,iOS,User account and personal information. Use in navigation and account areas.
+Profile,Android,User account and personal information. Use in navigation and account areas.
+Profile,Web,User account and personal information. Use in navigation and account areas.
+Account,iOS,User account management. More formal than 'Profile'. Use for business apps.
+Account,Android,User account management. More formal than 'Profile'. Use for business apps.
+Account,Web,User account management. More formal than 'Profile'. Use for business apps.
+Notifications,iOS,Alert preferences and history. Use in settings. Clear descriptor for alerts.
+Notifications,Android,Alert preferences and history. Use in settings. Clear descriptor for alerts.
+Notifications,Web,Alert preferences and history. Use in settings. Clear descriptor for alerts.
+Privacy,iOS,Data and privacy settings. Critical for user trust. Use clear, accessible language.
+Privacy,Android,Data and privacy settings. Critical for user trust. Use clear, accessible language.
+Privacy,Web,Data and privacy settings. Critical for user trust. Use clear, accessible language.
+Security,iOS,Account protection settings. Use for password, 2FA, login history. Builds trust.
+Security,Android,Account protection settings. Use for password, 2FA, login history. Builds trust.
+Security,Web,Account protection settings. Use for password, 2FA, login history. Builds trust.
+Preferences,iOS,User customization options. More technical than 'Settings'. Use in power-user features.
+Preferences,Android,User customization options. More technical than 'Settings'. Use in power-user features.
+Preferences,Web,User customization options. More technical than 'Settings'. Use in power-user features.
+About,iOS,App information (version, legal, credits). Use in settings footer. Informational.
+About,Android,App information (version, legal, credits). Use in settings footer. Informational.
+About,Web,App information (version, legal, credits). Use in settings footer. Informational.
+Terms of Service,iOS,Legal agreement link. Required for compliance. Use in footer and signup flows.
+Terms of Service,Android,Legal agreement link. Required for compliance. Use in footer and signup flows.
+Terms of Service,Web,Legal agreement link. Required for compliance. Use in footer and signup flows.
+Privacy Policy,iOS,Data handling policy link. Required for compliance. Use in footer and signup flows.
+Privacy Policy,Android,Data handling policy link. Required for compliance. Use in footer and signup flows.
+Privacy Policy,Web,Data handling policy link. Required for compliance. Use in footer and signup flows.
+Yes,iOS,Affirmative response in dialogs. Simple and clear. Use in confirmation prompts.
+Yes,Android,Affirmative response in dialogs. Simple and clear. Use in confirmation prompts.
+Yes,Web,Affirmative response in dialogs. Simple and clear. Use in confirmation prompts.
+No,iOS,Negative response in dialogs. Direct and clear. Use in confirmation prompts.
+No,Android,Negative response in dialogs. Direct and clear. Use in confirmation prompts.
+No,Web,Negative response in dialogs. Direct and clear. Use in confirmation prompts.
+OK,iOS,Acknowledgment in alerts. iOS convention for single-button alerts. Universal understanding.
+OK,Android,Acknowledgment in alerts. Material Design convention. Universal understanding.
+OK,Web,Acknowledgment in alerts. Web convention for simple confirmations. Universal understanding.
+Got It,iOS,Casual acknowledgment. Friendlier than 'OK'. Use for tips and informational messages.
+Got It,Android,Casual acknowledgment. Friendlier than 'OK'. Use for tips and informational messages.
+Got It,Web,Casual acknowledgment. Friendlier than 'OK'. Use for tips and informational messages.
+Dismiss,iOS,Close notification or message. Neutral action. Clear that content is being removed.
+Dismiss,Android,Close notification or message. Neutral action. Clear that content is being removed.
+Dismiss,Web,Close notification or message. Neutral action. Clear that content is being removed.
+Confirm,iOS,Verify action before execution. Use in destructive or significant actions. Clear intention.
+Confirm,Android,Verify action before execution. Use in destructive or significant actions. Clear intention.
+Confirm,Web,Verify action before execution. Use in destructive or significant actions. Clear intention.
+Are you sure?,iOS,Confirmation prompt for destructive actions. Always follow with specific consequences.
+Are you sure?,Android,Confirmation prompt for destructive actions. Always follow with specific consequences.
+Are you sure?,Web,Confirmation prompt for destructive actions. Always follow with specific consequences.
+Oops!,iOS,Friendly error headline. Humanizes error experience. Follow with clear explanation.
+Oops!,Android,Friendly error headline. Humanizes error experience. Follow with clear explanation.
+Oops!,Web,Friendly error headline. Humanizes error experience. Follow with clear explanation.
+No results,iOS,Empty state for search/filter. Suggest alternatives or adjusting criteria.
+No results,Android,Empty state for search/filter. Suggest alternatives or adjusting criteria.
+No results,Web,Empty state for search/filter. Suggest alternatives or adjusting criteria.
+Nothing here yet,iOS,Empty state for new users. Encourage first action. Add helpful context or CTA.
+Nothing here yet,Android,Empty state for new users. Encourage first action. Add helpful context or CTA.
+Nothing here yet,Web,Empty state for new users. Encourage first action. Add helpful context or CTA.
+Coming soon,iOS,Feature announcement. Builds anticipation. Use in roadmap or locked features.
+Coming soon,Android,Feature announcement. Builds anticipation. Use in roadmap or locked features.
+Coming soon,Web,Feature announcement. Builds anticipation. Use in roadmap or locked features.
+Optional,iOS,Mark non-required form fields. Reduces pressure. Use sparingly (mark required instead).
+Optional,Android,Mark non-required form fields. Reduces pressure. Use sparingly (mark required instead).
+Optional,Web,Mark non-required form fields. Reduces pressure. Use sparingly (mark required instead).
+Required,iOS,Mark mandatory form fields. Use asterisk (*) or 'Required' label. Be clear about necessity.
+Required,Android,Mark mandatory form fields. Use asterisk (*) or 'Required' label. Be clear about necessity.
+Required,Web,Mark mandatory form fields. Use asterisk (*) or 'Required' label. Be clear about necessity.
+Email address,iOS,Form field label. Specific and clear. Better than just 'Email' for accessibility.
+Email address,Android,Form field label. Specific and clear. Better than just 'Email' for accessibility.
+Email address,Web,Form field label. Specific and clear. Better than just 'Email' for accessibility.
+Password,iOS,Form field label. Use with secure input. Provide visibility toggle and requirements.
+Password,Android,Form field label. Use with secure input. Provide visibility toggle and requirements.
+Password,Web,Form field label. Use with secure input. Provide visibility toggle and requirements.
+Confirm password,iOS,Password verification field. Use in signup and password change. Prevent typos.
+Confirm password,Android,Password verification field. Use in signup and password change. Prevent typos.
+Confirm password,Web,Password verification field. Use in signup and password change. Prevent typos.
+Show password,iOS,Toggle secure input visibility. Use eye icon. Helps user verify input.
+Show password,Android,Toggle secure input visibility. Use eye icon. Helps user verify input.
+Show password,Web,Toggle secure input visibility. Use eye icon. Helps user verify input.
+Hide password,iOS,Toggle secure input back to hidden. Use eye-slash icon. Privacy protection.
+Hide password,Android,Toggle secure input back to hidden. Use eye-slash icon. Privacy protection.
+Hide password,Web,Toggle secure input back to hidden. Use eye-slash icon. Privacy protection.
+Forgot password?,iOS,Password recovery link. Place below password field. Question mark adds approachability.
+Forgot password?,Android,Password recovery link. Place below password field. Question mark adds approachability.
+Forgot password?,Web,Password recovery link. Place below password field. Question mark adds approachability.
+Reset password,iOS,Password recovery action. Use in password reset flows. Clear and direct.
+Reset password,Android,Password recovery action. Use in password reset flows. Clear and direct.
+Reset password,Web,Password recovery action. Use in password reset flows. Clear and direct.
+Change password,iOS,Update existing password. Use in security settings. Different from 'Reset'.
+Change password,Android,Update existing password. Use in security settings. Different from 'Reset'.
+Change password,Web,Update existing password. Use in security settings. Different from 'Reset'.
+Full name,iOS,Form field for complete name. Better than separate first/last for international users.
+Full name,Android,Form field for complete name. Better than separate first/last for international users.
+Full name,Web,Form field for complete name. Better than separate first/last for international users.
+First name,iOS,Form field. Use only when you specifically need separate name parts.
+First name,Android,Form field. Use only when you specifically need separate name parts.
+First name,Web,Form field. Use only when you specifically need separate name parts.
+Last name,iOS,Form field. Use only when you specifically need separate name parts.
+Last name,Android,Form field. Use only when you specifically need separate name parts.
+Last name,Web,Form field. Use only when you specifically need separate name parts.
+Phone number,iOS,Form field. Use appropriate input type (tel). Specify format if needed.
+Phone number,Android,Form field. Use appropriate input type (tel). Specify format if needed.
+Phone number,Web,Form field. Use appropriate input type (tel). Specify format if needed.
+Date of birth,iOS,Form field. Use date picker. Explain why you need it (age verification, etc).
+Date of birth,Android,Form field. Use date picker. Explain why you need it (age verification, etc).
+Date of birth,Web,Form field. Use date picker. Explain why you need it (age verification, etc).
+Address,iOS,Location form field. Consider using address autocomplete. Reduce input friction.
+Address,Android,Location form field. Consider using address autocomplete. Reduce input friction.
+Address,Web,Location form field. Consider using address autocomplete. Reduce input friction.
+City,iOS,Location form field. Part of address collection. Clear and standard.
+City,Android,Location form field. Part of address collection. Clear and standard.
+City,Web,Location form field. Part of address collection. Clear and standard.
+State,iOS,Location form field (US). Use 'Province' or 'Region' for international. Consider dropdown.
+State,Android,Location form field (US). Use 'Province' or 'Region' for international. Consider dropdown.
+State,Web,Location form field (US). Use 'Province' or 'Region' for international. Consider dropdown.
+Zip code,iOS,Postal code field (US). Use 'Postal code' for international. Use numeric input.
+Zip code,Android,Postal code field (US). Use 'Postal code' for international. Use numeric input.
+Zip code,Web,Postal code field (US). Use 'Postal code' for international. Use numeric input.
+Country,iOS,Location form field. Use dropdown with search. Consider auto-detection.
+Country,Android,Location form field. Use dropdown with search. Consider auto-detection.
+Country,Web,Location form field. Use dropdown with search. Consider auto-detection.
+Select,iOS,Dropdown or picker action. Use when choosing from predefined options.
+Select,Android,Dropdown or picker action. Use when choosing from predefined options.
+Select,Web,Dropdown or picker action. Use when choosing from predefined options.
+Choose,iOS,Alternative to 'Select'. More casual. Use in onboarding and preference flows.
+Choose,Android,Alternative to 'Select'. More casual. Use in onboarding and preference flows.
+Choose,Web,Alternative to 'Select'. More casual. Use in onboarding and preference flows.
+Pick,iOS,Informal selection action. Use in casual contexts. Example: 'Pick a color'.
+Pick,Android,Informal selection action. Use in casual contexts. Example: 'Pick a color'.
+Pick,Web,Informal selection action. Use in casual contexts. Example: 'Pick a color'.
+All,iOS,Select all items. Use in multi-select interfaces. Pair with 'None' for deselection.
+All,Android,Select all items. Use in multi-select interfaces. Pair with 'None' for deselection.
+All,Web,Select all items. Use in multi-select interfaces. Pair with 'None' for deselection.
+None,iOS,Deselect all items. Use in multi-select interfaces. Clear reset action.
+None,Android,Deselect all items. Use in multi-select interfaces. Clear reset action.
+None,Web,Deselect all items. Use in multi-select interfaces. Clear reset action.
+View All,iOS,See complete list or collection. Use when showing preview/subset. Expands content.
+View All,Android,See complete list or collection. Use when showing preview/subset. Expands content.
+View All,Web,See complete list or collection. Use when showing preview/subset. Expands content.
+See More,iOS,Expand truncated content. Use in feeds and descriptions. Indicates additional content.
+See More,Android,Expand truncated content. Use in feeds and descriptions. Indicates additional content.
+See More,Web,Expand truncated content. Use in feeds and descriptions. Indicates additional content.
+See Less,iOS,Collapse expanded content. Pair with 'See More'. Returns to preview state.
+See Less,Android,Collapse expanded content. Pair with 'See More'. Returns to preview state.
+See Less,Web,Collapse expanded content. Pair with 'See More'. Returns to preview state.
+Show More,iOS,Alternative to 'See More'. Reveals additional content or options.
+Show More,Android,Alternative to 'See More'. Reveals additional content or options.
+Show More,Web,Alternative to 'See More'. Reveals additional content or options.
+Show Less,iOS,Alternative to 'See Less'. Hides additional content or options.
+Show Less,Android,Alternative to 'See Less'. Hides additional content or options.
+Show Less,Web,Alternative to 'See Less'. Hides additional content or options.
+Next,iOS,Progress to next step or item. Use in multi-step flows and carousels.
+Next,Android,Progress to next step or item. Use in multi-step flows and carousels.
+Next,Web,Progress to next step or item. Use in multi-step flows and carousels.
+Previous,iOS,Return to prior step or item. Use in multi-step flows and carousels.
+Previous,Android,Return to prior step or item. Use in multi-step flows and carousels.
+Previous,Web,Return to prior step or item. Use in multi-step flows and carousels.
+Back,iOS,Navigate to previous screen. iOS convention with back arrow. Simple and universal.
+Back,Android,Navigate to previous screen. Material back button. Simple and universal.
+Back,Web,Navigate to previous screen. Browser back or custom navigation. Simple and universal.
+Home,iOS,Return to main screen. Use in navigation. Universal home concept.
+Home,Android,Return to main screen. Use in navigation. Universal home concept.
+Home,Web,Return to main screen. Use in navigation. Universal home concept.
+Menu,iOS,Open navigation drawer or menu. Use hamburger icon. Standard pattern.
+Menu,Android,Open navigation drawer or menu. Use hamburger icon. Standard pattern.
+Menu,Web,Open navigation drawer or menu. Use hamburger icon. Standard pattern.
+More,iOS,Additional options or actions. Three-dot menu (•••). Reveals secondary actions.
+More,Android,Additional options or actions. Three-dot menu (⋮). Reveals secondary actions.
+More,Web,Additional options or actions. Three-dot menu (•••). Reveals secondary actions.
+Feedback,iOS,User input or bug reporting. Use in settings or help. Shows you value input.
+Feedback,Android,User input or bug reporting. Use in settings or help. Shows you value input.
+Feedback,Web,User input or bug reporting. Use in settings or help. Shows you value input.
+Rate us,iOS,App store rating request. Use after positive interactions. Builds app credibility.
+Rate us,Android,App store rating request. Use after positive interactions. Builds app credibility.
+Invite friends,iOS,Referral or sharing action. Use in social features. Encourages growth.
+Invite friends,Android,Referral or sharing action. Use in social features. Encourages growth.
+Invite friends,Web,Referral or sharing action. Use in social features. Encourages growth.
+Log out,iOS,End session. Use in settings. Clear and expected action for account exit.
+Log out,Android,End session. Use in settings. Clear and expected action for account exit.
+Log out,Web,End session. Use in settings. Clear and expected action for account exit.
+Sign out,iOS,Alternative to 'Log out'. Matches 'Sign in' for consistency. Preferred in modern apps.
+Sign out,Android,Alternative to 'Log out'. Matches 'Sign in' for consistency. Preferred in modern apps.
+Sign out,Web,Alternative to 'Log out'. Matches 'Sign in' for consistency. Preferred in modern apps.
+Disconnect,iOS,End connection to service or account. Use for third-party integrations.
+Disconnect,Android,End connection to service or account. Use for third-party integrations.
+Disconnect,Web,End connection to service or account. Use for third-party integrations.
+Connect,iOS,Link to external service or account. Use for integrations and social connections.
+Connect,Android,Link to external service or account. Use for integrations and social connections.
+Connect,Web,Link to external service or account. Use for integrations and social connections.
+Link account,iOS,Connect existing account. Use in integration flows. Clear association action.
+Link account,Android,Connect existing account. Use in integration flows. Clear association action.
+Link account,Web,Connect existing account. Use in integration flows. Clear association action.
+Unlink account,iOS,Disconnect associated account. Confirm before executing. Reversible action.
+Unlink account,Android,Disconnect associated account. Confirm before executing. Reversible action.
+Unlink account,Web,Disconnect associated account. Confirm before executing. Reversible action.
+Enable,iOS,Turn on feature or setting. Binary state. Pair with 'Disable' for clarity.
+Enable,Android,Turn on feature or setting. Binary state. Pair with 'Disable' for clarity.
+Enable,Web,Turn on feature or setting. Binary state. Pair with 'Disable' for clarity.
+Disable,iOS,Turn off feature or setting. Binary state. Clear opposite of 'Enable'.
+Disable,Android,Turn off feature or setting. Binary state. Clear opposite of 'Enable'.
+Disable,Web,Turn off feature or setting. Binary state. Clear opposite of 'Enable'.
+Turn on,iOS,Activate feature. More conversational than 'Enable'. Use for user-facing features.
+Turn on,Android,Activate feature. More conversational than 'Enable'. Use for user-facing features.
+Turn on,Web,Activate feature. More conversational than 'Enable'. Use for user-facing features.
+Turn off,iOS,Deactivate feature. More conversational than 'Disable'. Use for user-facing features.
+Turn off,Android,Deactivate feature. More conversational than 'Disable'. Use for user-facing features.
+Turn off,Web,Deactivate feature. More conversational than 'Disable'. Use for user-facing features.
+On,iOS,Toggle state indicator. Simple binary state. Use in switch controls.
+On,Android,Toggle state indicator. Simple binary state. Use in switch controls.
+On,Web,Toggle state indicator. Simple binary state. Use in switch controls.
+Off,iOS,Toggle state indicator. Simple binary state. Use in switch controls.
+Off,Android,Toggle state indicator. Simple binary state. Use in switch controls.
+Off,Web,Toggle state indicator. Simple binary state. Use in switch controls.
+Active,iOS,Status indicator for enabled state. Use for subscriptions, features, accounts.
+Active,Android,Status indicator for enabled state. Use for subscriptions, features, accounts.
+Active,Web,Status indicator for enabled state. Use for subscriptions, features, accounts.
+Inactive,iOS,Status indicator for disabled state. Neutral term without negative connotation.
+Inactive,Android,Status indicator for disabled state. Neutral term without negative connotation.
+Inactive,Web,Status indicator for disabled state. Neutral term without negative connotation.
+Available,iOS,Status for ready/accessible items. Use in inventory, scheduling, feature availability.
+Available,Android,Status for ready/accessible items. Use in inventory, scheduling, feature availability.
+Available,Web,Status for ready/accessible items. Use in inventory, scheduling, feature availability.
+Unavailable,iOS,Status for inaccessible items. Explain why when possible. Suggest alternatives.
+Unavailable,Android,Status for inaccessible items. Explain why when possible. Suggest alternatives.
+Unavailable,Web,Status for inaccessible items. Explain why when possible. Suggest alternatives.
+Online,iOS,Connection or user status. Real-time indicator. Use in messaging and collaboration.
+Online,Android,Connection or user status. Real-time indicator. Use in messaging and collaboration.
+Online,Web,Connection or user status. Real-time indicator. Use in messaging and collaboration.
+Offline,iOS,Disconnected status. Provide offline capabilities when possible. Clear status.
+Offline,Android,Disconnected status. Provide offline capabilities when possible. Clear status.
+Offline,Web,Disconnected status. Provide offline capabilities when possible. Clear status.
+Draft,iOS,Unsent or unpublished status. Indicates work in progress. Use in content creation.
+Draft,Android,Unsent or unpublished status. Indicates work in progress. Use in content creation.
+Draft,Web,Unsent or unpublished status. Indicates work in progress. Use in content creation.
+Published,iOS,Live content status. Opposite of 'Draft'. Indicates public visibility.
+Published,Android,Live content status. Opposite of 'Draft'. Indicates public visibility.
+Published,Web,Live content status. Opposite of 'Draft'. Indicates public visibility.
+Pending,iOS,Awaiting action or approval. Temporary state. Provide expected timeline.
+Pending,Android,Awaiting action or approval. Temporary state. Provide expected timeline.
+Pending,Web,Awaiting action or approval. Temporary state. Provide expected timeline.
+Approved,iOS,Positive status for accepted items. Use in review workflows. Clear resolution.
+Approved,Android,Positive status for accepted items. Use in review workflows. Clear resolution.
+Approved,Web,Positive status for accepted items. Use in review workflows. Clear resolution.
+Declined,iOS,Rejected status. Neutral term without blame. Explain reason when possible.
+Declined,Android,Rejected status. Neutral term without blame. Explain reason when possible.
+Declined,Web,Rejected status. Neutral term without blame. Explain reason when possible.
+Completed,iOS,Finished status. Positive completion. Use for tasks, orders, processes.
+Completed,Android,Finished status. Positive completion. Use for tasks, orders, processes.
+Completed,Web,Finished status. Positive completion. Use for tasks, orders, processes.
+In progress,iOS,Ongoing status. Indicates active work. Provide progress indicators when possible.
+In progress,Android,Ongoing status. Indicates active work. Provide progress indicators when possible.
+In progress,Web,Ongoing status. Indicates active work. Provide progress indicators when possible.
+Expired,iOS,Time-limited item past deadline. Use for trials, offers, sessions. Clear finality.
+Expired,Android,Time-limited item past deadline. Use for trials, offers, sessions. Clear finality.
+Expired,Web,Time-limited item past deadline. Use for trials, offers, sessions. Clear finality.
+Canceled,iOS,User-terminated status. Neutral without blame. Use for orders, subscriptions, bookings.
+Canceled,Android,User-terminated status. Neutral without blame. Use for orders, subscriptions, bookings.
+Canceled,Web,User-terminated status. Neutral without blame. Use for orders, subscriptions, bookings.
+Scheduled,iOS,Future-planned status. Shows date/time. Use for posts, payments, events.
+Scheduled,Android,Future-planned status. Shows date/time. Use for posts, payments, events.
+Scheduled,Web,Future-planned status. Shows date/time. Use for posts, payments, events.
+Today,iOS,Time reference for current day. Use in calendars and date filters. Immediate recognition.
+Today,Android,Time reference for current day. Use in calendars and date filters. Immediate recognition.
+Today,Web,Time reference for current day. Use in calendars and date filters. Immediate recognition.
+Yesterday,iOS,Time reference for prior day. Use in activity feeds and history. Clear temporal marker.
+Yesterday,Android,Time reference for prior day. Use in activity feeds and history. Clear temporal marker.
+Yesterday,Web,Time reference for prior day. Use in activity feeds and history. Clear temporal marker.
+Tomorrow,iOS,Time reference for next day. Use in scheduling and reminders. Future indicator.
+Tomorrow,Android,Time reference for next day. Use in scheduling and reminders. Future indicator.
+Tomorrow,Web,Time reference for next day. Use in scheduling and reminders. Future indicator.
+Now,iOS,Immediate time reference. Use for real-time actions. Sense of urgency and immediacy.
+Now,Android,Immediate time reference. Use for real-time actions. Sense of urgency and immediacy.
+Now,Web,Immediate time reference. Use for real-time actions. Sense of urgency and immediacy.
+Later,iOS,Deferred time option. Use in snooze and reminder features. Casual and flexible.
+Later,Android,Deferred time option. Use in snooze and reminder features. Casual and flexible.
+Later,Web,Deferred time option. Use in snooze and reminder features. Casual and flexible.
+Recent,iOS,Time-based filter for latest items. Use in lists and search. Shows freshness.
+Recent,Android,Time-based filter for latest items. Use in lists and search. Shows freshness.
+Recent,Web,Time-based filter for latest items. Use in lists and search. Shows freshness.
+All time,iOS,Complete history filter. Shows everything regardless of date. Comprehensive view.
+All time,Android,Complete history filter. Shows everything regardless of date. Comprehensive view.
+All time,Web,Complete history filter. Shows everything regardless of date. Comprehensive view.
+Custom,iOS,User-defined option. Use when predefined options don't cover needs. Flexibility.
+Custom,Android,User-defined option. Use when predefined options don't cover needs. Flexibility.
+Custom,Web,User-defined option. Use when predefined options don't cover needs. Flexibility.
+Default,iOS,Standard or original setting. Reset option. Clear baseline reference.
+Default,Android,Standard or original setting. Reset option. Clear baseline reference.
+Default,Web,Standard or original setting. Reset option. Clear baseline reference.
+Recommended,iOS,Suggested option or setting. Guides user choice. Helpful without forcing.
+Recommended,Android,Suggested option or setting. Guides user choice. Helpful without forcing.
+Recommended,Web,Suggested option or setting. Guides user choice. Helpful without forcing.
+Popular,iOS,Frequently chosen option. Social proof. Use in selection interfaces.
+Popular,Android,Frequently chosen option. Social proof. Use in selection interfaces.
+Popular,Web,Frequently chosen option. Social proof. Use in selection interfaces.
+New,iOS,Recently added content or feature. Draws attention. Time-limited indicator.
+New,Android,Recently added content or feature. Draws attention. Time-limited indicator.
+New,Web,Recently added content or feature. Draws attention. Time-limited indicator.
+Updated,iOS,Recently modified content. Shows freshness. Use in change logs and content lists.
+Updated,Android,Recently modified content. Shows freshness. Use in change logs and content lists.
+Updated,Web,Recently modified content. Shows freshness. Use in change logs and content lists.
+Free,iOS,No-cost option or tier. Emphasizes value. Use in pricing and feature labels.
+Free,Android,No-cost option or tier. Emphasizes value. Use in pricing and feature labels.
+Free,Web,No-cost option or tier. Emphasizes value. Use in pricing and feature labels.
+Premium,iOS,Paid tier or locked feature. Aspirational term. Use in upgrade prompts.
+Premium,Android,Paid tier or locked feature. Aspirational term. Use in upgrade prompts.
+Premium,Web,Paid tier or locked feature. Aspirational term. Use in upgrade prompts.
+Pro,iOS,Advanced tier designation. Professional connotation. Use in tiered offerings.
+Pro,Android,Advanced tier designation. Professional connotation. Use in tiered offerings.
+Pro,Web,Advanced tier designation. Professional connotation. Use in tiered offerings.
+Basic,iOS,Entry-level tier. Neutral descriptor without negative connotation.
+Basic,Android,Entry-level tier. Neutral descriptor without negative connotation.
+Basic,Web,Entry-level tier. Neutral descriptor without negative connotation.
+Plus,iOS,Mid-tier option. Indicates extra features. Common tier naming convention.
+Plus,Android,Mid-tier option. Indicates extra features. Common tier naming convention.
+Plus,Web,Mid-tier option. Indicates extra features. Common tier naming convention.
