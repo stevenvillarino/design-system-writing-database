@@ -1,23 +1,13 @@
 // Database configurations
+// IMPORTANT: Copy this file to code.js and replace the placeholders with your actual credentials
 const DATABASES = {
     commonTerms: {
-        apiKey: 'patzUH6BjxUkKN0bA.6101cd9a5cc8bf17d091b0bee3b4a30c689de06f8ba998f8bb5d93e37653c87c',
-        baseId: 'appnRYSC7jy8V0Rtx',
+        apiKey: '{{AIRTABLE_PAT}}', // Replace with your Airtable Personal Access Token
+        baseId: '{{AIRTABLE_BASE_ID}}', // Replace with your Airtable Base ID (e.g., appXXXXXXXXXXXXXX)
         tableName: 'Common Terms',
         displayName: 'UX Writing Database',
         fields: {
             term: 'Content',
-            platform: 'Platform',
-            explanation: 'Examples + Explanation'
-        }
-    },
-    sportsOnly: {
-        apiKey: 'patWFLhwYW5LzMCuj.19660ab8da307b18041d3ba32385b511dc17d63b2ac042dbb7c875ec0d46297d',
-        baseId: 'appcm9Wc6ykKgXxZG',
-        tableName: 'Sports Only',
-        displayName: 'Zone Tiles - Sports',
-        fields: {
-            term: 'Zone Name',
             platform: 'Platform',
             explanation: 'Examples + Explanation'
         }

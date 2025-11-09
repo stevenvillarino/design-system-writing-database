@@ -21,6 +21,9 @@ build/
 .env.test.local
 .env.production.local
 
+# Secrets in code (use code.template.js instead)
+code.js
+
 # IDE files
 .vscode/
 .idea/
