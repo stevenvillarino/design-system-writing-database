@@ -9,7 +9,7 @@ const DATABASES = {
         fields: {
             term: 'Content',
             platform: 'Platform',
-            explanation: 'Examples + Explanation'
+            explanation: 'Examples & Explanation'
         }
     }
 };
