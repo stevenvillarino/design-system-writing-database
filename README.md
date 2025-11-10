@@ -45,6 +45,15 @@ Speed Rail is a powerful Figma plugin that helps design teams maintain consisten
 
 ## 🏗 Architecture
 
+### Tech Stack
+- **Frontend UI**: React 18 + TypeScript + Vite
+- **Plugin Backend**: Figma Plugin API (JavaScript)
+- **Database**: Airtable (REST API)
+- **Build Tool**: Vite with single-file bundling
+- **Styling**: CSS with custom properties
+
+### System Architecture
+
 ```mermaid
 graph TD
     A[Figma Plugin] --> B[Speed Rail UI]
@@ -58,17 +67,37 @@ graph TD
 
     E --> H[Scan Selected Frame]
     H --> I[Highlight Invalid Terms]
-    
+
     I --> M[Find Template Placeholders]
     M --> N[Load Required Fonts]
     N --> O[Generate Variations]
-    
+
     J --> P[Filter by Platform]
     P --> Q[Insert into Canvas]
-    
+
     F --> R[Terms List]
     G --> R
     R --> P
+```
+
+### File Structure
+```
+design-system-writing-database/
+├── src/                     # React UI source files
+│   ├── App.tsx             # Main application component
+│   ├── App.css             # Global styles
+│   ├── types.ts            # TypeScript interfaces
+│   └── components/         # React components
+│       ├── ActionButtons.tsx
+│       ├── PlatformFilter.tsx
+│       ├── TermsList.tsx
+│       └── ValidationDisplay.tsx
+├── code.js                 # Plugin backend (gitignored)
+├── code.template.js        # Template for code.js
+├── manifest.json           # Figma plugin manifest
+├── ui.html                 # Built UI (generated)
+├── build.js                # Build script
+└── vite.config.ts          # Vite configuration
 ```
 
 ## 🎬 Demo & Use Cases
@@ -124,37 +153,58 @@ Before installing Speed Rail, ensure you have:
 1. **Clone the Repository**
    ```bash
    git clone <repository-url>
-   cd writing-on-the-wall
+   cd design-system-writing-database
    ```
 
-2. **Install Dependencies** (if any package.json exists)
+2. **Install Dependencies**
    ```bash
    npm install
    ```
 
 3. **Configure Database Connection**
 
-   Update the database configuration in `code.js`:
+   Create your local configuration file:
+   ```bash
+   cp code.template.js code.js
+   ```
+
+   Edit `code.js` and add your Airtable credentials:
    ```javascript
    const DATABASES = {
        commonTerms: {
-           apiKey: 'your-airtable-api-key',
-           baseId: 'your-airtable-base-id',
+           apiKey: 'patXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+           baseId: 'appXXXXXXXXXXXXXX',
            tableName: 'Common Terms',
-           displayName: 'UX Writing Database'
+           displayName: 'Speed Rail',
+           fields: {
+               term: 'Content',
+               platform: 'Platform',
+               explanation: 'Examples & Explanation'
+           }
        }
    }
    ```
 
-4. **Import into Figma**
+   > **Note**: `code.js` is gitignored to protect your API keys. See [LOCAL_SETUP.md](./LOCAL_SETUP.md) for detailed setup instructions.
+
+4. **Build the Plugin UI**
+   ```bash
+   npm run build
+   ```
+
+   This compiles the React + TypeScript UI and bundles everything into `ui.html`.
+
+5. **Import into Figma**
    - Open Figma Desktop App
    - Go to `Plugins` → `Development` → `Import plugin from manifest`
    - Select the `manifest.json` file from this project
    - Click "Save"
 
-5. **Test the Plugin**
+6. **Test the Plugin**
    - Create a new Figma file
    - Run the plugin from `Plugins` → `Development` → `Speed Rail`
+
+   > **Tip**: After making code changes, run `npm run build` and reload the plugin in Figma.
 
 ## 📖 Usage Guide
 
@@ -169,6 +219,7 @@ Before installing Speed Rail, ensure you have:
    - Select a frame containing text
    - Click "🔍 Scan Frame for Invalid Terms"
    - Invalid terms will be highlighted in red
+   - Click "Go to layer" next to any invalid term to jump directly to that text layer in Figma
 
 3. **Generate Mocks**
    - Create a template with placeholder text `{{Content}}` or layer names
@@ -201,24 +252,36 @@ The plugin automatically:
 
 Your Airtable table should have the following columns:
 
-| Column | Description |
-|--------|-------------|
-| Content | The approved term/phrase |
-| Platform | Target platform (iOS, Android, Web, etc.) |
-| Examples + Explanation | Usage context and examples |
+| Column | Type | Description |
+|--------|------|-------------|
+| Content | Single line text | The approved term/phrase |
+| Platform | Multiple select | Target platform(s): iOS, Android, Web, etc. |
+| Examples & Explanation | Long text | Usage context and examples |
+
+> **Note**: The Platform field should be a "Multiple select" type in Airtable to support terms that apply to multiple platforms.
 
 ### Network Access
 The plugin requires network access to:
-- `https://api.airtable.com` for fetching data
+- `https://api.airtable.com` for fetching content data
+- `https://fonts.googleapis.com` for loading custom fonts
 
 This is configured in `manifest.json`:
 ```json
 "networkAccess": {
   "allowedDomains": [
-    "https://api.airtable.com"
+    "https://api.airtable.com",
+    "https://fonts.googleapis.com"
   ]
 }
 ```
+
+### Document Access
+The plugin uses `"documentAccess": "dynamic-page"` which allows it to:
+- Access nodes across different pages dynamically
+- Navigate to and select specific text layers
+- Required for the "Go to layer" feature
+
+> **Note**: This requires using async APIs like `figma.getNodeByIdAsync()` instead of synchronous methods.
 
 ## 🚨 Troubleshooting
 
@@ -240,17 +303,26 @@ This is configured in `manifest.json`:
    - Try using placeholder in layer name instead of text content
 
 4. **Plugin won't load**
-   - Refresh Figma
-   - Check browser console for errors
-   - Verify manifest.json is valid
+   - Ensure you've run `npm run build` to compile the UI
+   - Refresh Figma (close and reopen the plugin)
+   - Check browser console (F12) for errors
+   - Check plugin console (Plugins → Development → Open Console)
+   - Verify manifest.json is valid JSON
+
+5. **"Go to layer" button doesn't work**
+   - Make sure you've reloaded the plugin after running `npm run build`
+   - Check the plugin console for error messages
+   - Verify the text layer still exists in your document
 
 ### Getting Help
 
 For technical issues:
-1. Check browser console (F12) for error messages
-2. Verify Airtable API access and permissions
-3. Test with a simple template first
-4. Contact your team's plugin administrator
+1. Check **browser console** (F12) for UI-related error messages
+2. Check **plugin console** (Plugins → Development → Open Console) for plugin code errors
+3. Verify Airtable API access and permissions
+4. Ensure you've run `npm run build` after code changes
+5. Test with a simple template first
+6. Contact your team's plugin administrator
 
 ## 🔄 Updates
 
@@ -335,10 +407,14 @@ We welcome contributions! To modify or extend Speed Rail:
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Make your changes:
-   - Update `code.js` for backend logic
-   - Update `ui.html` for interface changes
+   - Update `code.js` for plugin logic (Figma API interactions)
+   - Update React components in `src/` for UI changes
    - Update `manifest.json` for plugin settings
-4. Test thoroughly with both databases
+   - Run `npm run build` to compile changes
+4. Test thoroughly:
+   - Test with different platforms and terms
+   - Check both browser console and plugin console for errors
+   - Verify changes work after plugin reload
 5. Update documentation (README, ROADMAP, etc.)
 6. Submit a pull request
 

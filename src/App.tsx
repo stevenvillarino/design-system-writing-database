@@ -3,6 +3,7 @@ import { PlatformFilter } from './components/PlatformFilter';
 import { ActionButtons } from './components/ActionButtons';
 import { TermsList } from './components/TermsList';
 import { ValidationDisplay } from './components/ValidationDisplay';
+import { SearchInput } from './components/SearchInput';
 import { Term, MessageType, UIMessageType } from './types';
 import './App.css';
 
@@ -10,7 +11,8 @@ function App() {
   const [currentPlatform, setCurrentPlatform] = useState('All Platforms');
   const [terms, setTerms] = useState<Term[]>([]);
   const [platforms, setPlatforms] = useState<string[]>([]);
-  const [invalidTerms, setInvalidTerms] = useState<Array<{ text: string; location: string }>>([]);
+  const [invalidTerms, setInvalidTerms] = useState<Array<{ text: string; location: string; nodeId: string }>>([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     // Listen for messages from plugin code
@@ -64,6 +66,27 @@ function App() {
     sendMessage({ type: 'create-mocks' });
   };
 
+  const handleSelectNode = (nodeId: string) => {
+    console.log('Sending select-node message with nodeId:', nodeId);
+    sendMessage({ type: 'select-node', nodeId });
+  };
+
+  const handleClearValidation = () => {
+    setInvalidTerms([]);
+  };
+
+  // Filter terms based on search query
+  const filteredTerms = terms.filter(term => {
+    if (!searchQuery) return true;
+    const query = searchQuery.toLowerCase();
+    return (
+      term.term?.toLowerCase().includes(query) ||
+      term.explanation?.toLowerCase().includes(query) ||
+      term.type?.toLowerCase().includes(query) ||
+      term.platform?.toLowerCase().includes(query)
+    );
+  });
+
   return (
     <div className="app">
       <PlatformFilter
@@ -71,12 +94,19 @@ function App() {
         currentPlatform={currentPlatform}
         onChange={handlePlatformChange}
       />
+      <SearchInput value={searchQuery} onChange={setSearchQuery} />
       <ActionButtons
         onScanFrame={handleScanFrame}
         onGenerateMocks={handleGenerateMocks}
       />
-      {invalidTerms.length > 0 && <ValidationDisplay invalidTerms={invalidTerms} />}
-      <TermsList terms={terms} onTermClick={handleTermClick} />
+      {invalidTerms.length > 0 && (
+        <ValidationDisplay
+          invalidTerms={invalidTerms}
+          onSelectNode={handleSelectNode}
+          onClear={handleClearValidation}
+        />
+      )}
+      <TermsList terms={filteredTerms} onTermClick={handleTermClick} />
     </div>
   );
 }

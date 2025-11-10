@@ -9,6 +9,7 @@ const DATABASES = {
         fields: {
             term: 'Content',
             platform: 'Platform',
+            type: 'Type',
             explanation: 'Examples & Explanation'
         }
     }
@@ -54,13 +55,21 @@ async function fetchTerms(platform = '') {
             throw new Error('Invalid data format received from Airtable');
         }
         
-        terms = data.records.map(record => ({
-            id: record.id,
-            term: record.fields[dbConfig.fields.term],
-            platform: record.fields[dbConfig.fields.platform],
-            approved: true,
-            explanation: record.fields[dbConfig.fields.explanation]
-        }));
+        terms = data.records.map(record => {
+            const platformField = record.fields[dbConfig.fields.platform];
+            const typeField = record.fields[dbConfig.fields.type];
+
+            return {
+                id: record.id,
+                term: record.fields[dbConfig.fields.term],
+                platform: Array.isArray(platformField) ? platformField.join(', ') : platformField,
+                platforms: Array.isArray(platformField) ? platformField : [platformField].filter(Boolean),
+                type: Array.isArray(typeField) ? typeField.join(', ') : typeField,
+                types: Array.isArray(typeField) ? typeField : [typeField].filter(Boolean),
+                approved: true,
+                explanation: record.fields[dbConfig.fields.explanation]
+            };
+        });
         
         // Get unique platforms and send to UI
         const uniquePlatforms = [...new Set(terms.map(term => term.platform))].filter(Boolean);
