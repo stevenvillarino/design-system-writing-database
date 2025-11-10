@@ -48,19 +48,16 @@ Speed Rail is a powerful Figma plugin that helps design teams maintain consisten
 ```mermaid
 graph TD
     A[Figma Plugin] --> B[Speed Rail UI]
-    B --> C[Database Selector]
-    C --> D[UX Writing Database]
-    C --> E[Zone Tiles - Sports]
-    
-    D --> F[Airtable API<br/>Content Field]
-    E --> G[Airtable API<br/>Zone Name Field]
-    
-    B --> H[Content Validation]
-    B --> I[Mock Generation]
-    B --> J[Term Browser]
-    
-    H --> K[Scan Selected Frame]
-    K --> L[Highlight Invalid Terms]
+    B --> C[UX Writing Database]
+
+    C --> D[Airtable API<br/>Content Field]
+
+    B --> E[Content Validation]
+    B --> F[Mock Generation]
+    B --> G[Term Browser]
+
+    E --> H[Scan Selected Frame]
+    H --> I[Highlight Invalid Terms]
     
     I --> M[Find Template Placeholders]
     M --> N[Load Required Fonts]
@@ -116,11 +113,11 @@ Before installing Speed Rail, ensure you have:
 
 3. **Launch the Plugin**
    - Click on Speed Rail
-   - The plugin will automatically load both databases
+   - The plugin will automatically load the UX Writing database
 
 4. **Start Using**
-   - Select database from dropdown (UX Writing Database or Zone Tiles - Sports)
-   - Browse terms or use the action buttons
+   - Browse approved UX writing terms
+   - Filter by platform or use the action buttons
 
 ### For Developers (Setting Up Development)
 
@@ -135,22 +132,16 @@ Before installing Speed Rail, ensure you have:
    npm install
    ```
 
-3. **Configure Database Connections**
-   
-   Update the database configurations in `code.js`:
+3. **Configure Database Connection**
+
+   Update the database configuration in `code.js`:
    ```javascript
    const DATABASES = {
        commonTerms: {
-           apiKey: 'your-ux-writing-api-key',
-           baseId: 'your-ux-writing-base-id',
+           apiKey: 'your-airtable-api-key',
+           baseId: 'your-airtable-base-id',
            tableName: 'Common Terms',
            displayName: 'UX Writing Database'
-       },
-       sportsOnly: {
-           apiKey: 'your-sports-api-key', 
-           baseId: 'your-sports-base-id',
-           tableName: 'Sports Only',
-           displayName: 'Zone Tiles - Sports'
        }
    }
    ```
@@ -169,24 +160,18 @@ Before installing Speed Rail, ensure you have:
 
 ### Basic Workflow
 
-1. **Select Database**
-   - Choose "UX Writing Database" for general content terms
-   - Choose "Zone Tiles - Sports" for sports-specific zone names
-
-2. **Browse and Insert Terms**
-   - View all available terms in the list
+1. **Browse and Insert Terms**
+   - View all available approved UX writing terms in the list
    - Filter by platform if needed
    - Click any term to insert it as a text layer
 
-3. **Validate Content**
+2. **Validate Content**
    - Select a frame containing text
    - Click "🔍 Scan Frame for Invalid Terms"
    - Invalid terms will be highlighted in red
 
-4. **Generate Mocks**
-   - Create a template with placeholder text or layer names:
-     - UX Writing: `{{Content}}` 
-     - Sports: `{{Zone Name}}`
+3. **Generate Mocks**
+   - Create a template with placeholder text `{{Content}}` or layer names
    - Select your template
    - Click "🚀 Generate Mocks from Template"
    - Multiple variations will be created automatically
@@ -196,8 +181,8 @@ Before installing Speed Rail, ensure you have:
 #### Template Placeholders
 Speed Rail supports two types of placeholders:
 
-1. **Text Content**: `"Hello {{Zone Name}}"` → `"Hello Penalty Box"`
-2. **Layer Names**: Layer named `{{Zone Name}}` → Content becomes `"Penalty Box"`
+1. **Text Content**: `"Hello {{Content}}"` → `"Hello [Approved Term]"`
+2. **Layer Names**: Layer named `{{Content}}` → Content becomes `"[Approved Term]"`
 
 #### Font Handling
 The plugin automatically:
@@ -208,24 +193,18 @@ The plugin automatically:
 #### Platform Filtering
 - Filter terms by platform (iOS, Android, Web, etc.)
 - Platform options are dynamically loaded from your Airtable data
-- "All Platforms" option available for UX Writing Database
+- "All Platforms" option shows all approved terms
 
 ## 🔧 Configuration
 
 ### Airtable Schema
 
-#### UX Writing Database
+Your Airtable table should have the following columns:
+
 | Column | Description |
 |--------|-------------|
 | Content | The approved term/phrase |
 | Platform | Target platform (iOS, Android, Web, etc.) |
-| Examples + Explanation | Usage context and examples |
-
-#### Zone Tiles - Sports  
-| Column | Description |
-|--------|-------------|
-| Zone Name | The zone/area name |
-| Platform | Target platform |
 | Examples + Explanation | Usage context and examples |
 
 ### Network Access
@@ -256,8 +235,8 @@ This is configured in `manifest.json`:
    - Ensure fonts are available in your Figma file
 
 3. **"No placeholders found"**
-   - Check placeholder syntax: `{{Zone Name}}` or `{{Content}}`
-   - Verify you're using the correct field name for your database
+   - Check placeholder syntax: `{{Content}}`
+   - Verify you're using the correct placeholder syntax
    - Try using placeholder in layer name instead of text content
 
 4. **Plugin won't load**

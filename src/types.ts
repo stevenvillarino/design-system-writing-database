@@ -4,11 +4,6 @@ export interface Term {
   explanation: string;
 }
 
-export interface Database {
-  id: string;
-  displayName: string;
-}
-
 export type MessageType =
   | { type: 'update-terms'; terms: Term[] }
   | { type: 'update-platforms'; platforms: string[] }
@@ -17,7 +12,6 @@ export type MessageType =
   | { type: 'error'; message: string };
 
 export type UIMessageType =
-  | { type: 'database-changed'; database: string }
   | { type: 'platform-changed'; platform: string }
   | { type: 'create-text'; text: string }
   | { type: 'scan-frame' }

@@ -21,7 +21,6 @@ design-system-writing-database/
 │   ├── App.css               # Global styles
 │   ├── types.ts              # TypeScript types
 │   └── components/
-│       ├── DatabaseSelector.tsx
 │       ├── PlatformFilter.tsx
 │       ├── ActionButtons.tsx
 │       ├── TermsList.tsx
@@ -80,13 +79,9 @@ npm run type-check
 ### App.tsx
 
 Main component that:
-- Manages global state (database, platform, terms, invalid terms)
+- Manages global state (platform, terms, invalid terms)
 - Handles message passing with Figma plugin
 - Coordinates child components
-
-### DatabaseSelector
-
-Dropdown for selecting between databases (UX Writing, Zone Tiles, etc.)
 
 ### PlatformFilter
 
@@ -118,11 +113,6 @@ interface Term {
   explanation: string;
 }
 
-interface Database {
-  id: string;
-  displayName: string;
-}
-
 // Plugin → UI messages
 type MessageType =
   | { type: 'update-terms'; terms: Term[] }
@@ -133,7 +123,6 @@ type MessageType =
 
 // UI → Plugin messages
 type UIMessageType =
-  | { type: 'database-changed'; database: string }
   | { type: 'platform-changed'; platform: string }
   | { type: 'create-text'; text: string }
   | { type: 'scan-frame' }

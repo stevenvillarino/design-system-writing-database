@@ -1,19 +1,12 @@
 import { useEffect, useState } from 'react';
-import { DatabaseSelector } from './components/DatabaseSelector';
 import { PlatformFilter } from './components/PlatformFilter';
 import { ActionButtons } from './components/ActionButtons';
 import { TermsList } from './components/TermsList';
 import { ValidationDisplay } from './components/ValidationDisplay';
-import { Term, Database, MessageType, UIMessageType } from './types';
+import { Term, MessageType, UIMessageType } from './types';
 import './App.css';
 
-const DATABASES: Database[] = [
-  { id: 'commonTerms', displayName: 'UX Writing Database' },
-  { id: 'sportsOnly', displayName: 'Zone Tiles - Sports' },
-];
-
 function App() {
-  const [currentDatabase, setCurrentDatabase] = useState('commonTerms');
   const [currentPlatform, setCurrentPlatform] = useState('All Platforms');
   const [terms, setTerms] = useState<Term[]>([]);
   const [platforms, setPlatforms] = useState<string[]>([]);
@@ -45,17 +38,12 @@ function App() {
       }
     };
 
-    // Initial load
-    sendMessage({ type: 'database-changed', database: currentDatabase });
+    // Initial load - request terms
+    sendMessage({ type: 'platform-changed', platform: '' });
   }, []);
 
   const sendMessage = (message: UIMessageType) => {
     parent.postMessage({ pluginMessage: message }, '*');
-  };
-
-  const handleDatabaseChange = (database: string) => {
-    setCurrentDatabase(database);
-    sendMessage({ type: 'database-changed', database });
   };
 
   const handlePlatformChange = (platform: string) => {
@@ -78,11 +66,6 @@ function App() {
 
   return (
     <div className="app">
-      <DatabaseSelector
-        databases={DATABASES}
-        currentDatabase={currentDatabase}
-        onChange={handleDatabaseChange}
-      />
       <PlatformFilter
         platforms={platforms}
         currentPlatform={currentPlatform}
