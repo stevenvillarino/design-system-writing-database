@@ -21,6 +21,9 @@ build/
 .env.test.local
 .env.production.local
 
+# Secrets in code (use code.template.js instead)
+code.js
+
 # IDE files
 .vscode/
 .idea/
@@ -40,6 +43,10 @@ temp/
 
 # Figma plugin build outputs
 *.js.map
+
+# Vite build output
+dist/
+ui.html
 
 # Package lock files (optional - uncomment if you want to ignore)
 # package-lock.json

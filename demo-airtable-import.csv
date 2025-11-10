@@ -1,0 +1,198 @@
+Content,Platform,Type,Examples + Explanation
+Get Started,Global,Onboarding & CTA,Primary call-to-action for onboarding flows. Use on first screen to begin user journey. Friendly and inviting tone.
+Continue,Global,Navigation & Flow,Use for multi-step flows to proceed to next step. Neutral tone that doesn't oversell.
+Sign In,Global,Authentication,Use for authentication screens. Preferred over 'Log In' or 'Login'. Matches brand voice guidelines.
+Sign Up,Global,Authentication,Use for new account creation. Preferred over 'Register' or 'Create Account'. Keep it simple.
+Start Free Trial,Global,Subscription & Billing,Primary CTA for subscription flows. Emphasizes no cost commitment. Use in marketing and conversion flows.
+Choose Plan,Global,Subscription & Billing,Use in subscription selection screens. Clear and direct action verb.
+Subscribe Now,Global,Subscription & Billing,Final commitment button in subscription flow. Use after plan details are shown.
+Confirm Subscription,Global,Subscription & Billing,Use on payment confirmation screen before final purchase. Provides clarity and reduces abandonment.
+Manage Subscription,Global,Subscription & Billing,Use in account settings for users to access subscription details. Neutral and informative tone.
+Cancel Subscription,Global,Subscription & Billing,Destructive action. Use clear language without dark patterns. Place in subscription management section.
+Update Payment Method,Global,Subscription & Billing,Use in billing section when payment needs attention. Clear call-to-action for fixing payment issues.
+Renews on [date],Global,Subscription & Billing,Use to display next billing date. Format: 'Renews on Jan 15' with actual date. Shows transparency.
+Your trial ends on [date],Global,Subscription & Billing,Use during trial period to show expiration. Format: 'Your trial ends on Jan 15' with actual date.
+Try for Free,Global,Subscription & Billing,Secondary CTA for trial offers. Less committal than 'Start Free Trial'. Use in cards or promotional areas.
+Save & Continue,Global,Actions & Commands,Use when saving settings or profile information before moving to next step. Combines two actions clearly.
+Save Changes,Global,Actions & Commands,Use in settings and profile screens. Explicit save action. Place prominently after form edits.
+Cancel,Global,Actions & Commands,Use as secondary button to exit or dismiss without saving. Always pair with a primary action.
+Go Back,Global,Navigation & Flow,Use in navigation to return to previous screen. Preferred over just 'Back' for clarity.
+Delete Account,Global,Account Management,Destructive action in account settings. Use clear language without euphemisms. Confirm before executing.
+Something went wrong,Global,Errors & Alerts,Generic error message headline. Always follow with specific explanation and recovery action.
+Try Again,Global,Errors & Alerts,Use as recovery action after errors. Gives user clear path forward without technical jargon.
+Payment Failed,Global,Errors & Alerts,Error headline for payment issues. Follow with reason (card declined, insufficient funds) and fix action.
+Update Card,Global,Subscription & Billing,CTA when payment method needs updating. Short and action-oriented for error states.
+Contact Support,Global,Help & Support,Use when user needs help. Links to support channels. Place in settings and error states.
+Learn More,Global,Help & Support,Secondary action to get additional information. Use as text link or secondary button. Non-committal.
+View Details,Global,Actions & Commands,Use to drill into more information. Common in lists and cards. Neutral and descriptive.
+Done,Global,Actions & Commands,Use to complete a task or flow. Positive completion signal. Common in modals and sheets.
+Close,Global,Actions & Commands,Use to dismiss overlays and modals. Neutral action that doesn't save changes.
+Skip,Global,Navigation & Flow,Optional action in onboarding flows. Allows users to bypass non-essential steps. Use sparingly.
+Skip for Now,Global,Navigation & Flow,More explicit version of 'Skip'. Use when action can be done later. Less dismissive than 'Skip'.
+Not Now,Global,Navigation & Flow,Polite decline for permission requests or prompts. Allows re-prompting later. Better than 'No' alone.
+Maybe Later,Global,Navigation & Flow,Another option for deferring actions. Slightly softer than 'Not Now'. Use in non-critical prompts.
+Allow,iOS,Permissions,Use for permission requests (notifications, location, camera). Positive action. Pair with 'Don't Allow'.
+Allow,Android,Permissions,Use for permission requests (notifications, location, camera). Positive action. Pair with 'Don't Allow'.
+Don't Allow,iOS,Permissions,Decline permission requests. Clear and respectful of user choice. Alternative to plain 'No'.
+Don't Allow,Android,Permissions,Decline permission requests. Clear and respectful of user choice. Alternative to plain 'No'.
+Enable Notifications,Global,Permissions,Specific call-to-action for notification permissions. More descriptive than generic 'Allow'.
+You're all set!,Global,Success & Confirmation,Success message after completing setup or onboarding. Celebratory and positive tone.
+Welcome to [app name],Global,Onboarding & CTA,Onboarding headline. Replace [app name] with actual product name. Warm and inviting.
+Subscription Confirmed,Global,Success & Confirmation,Success headline after completing subscription purchase. Clear confirmation of transaction.
+Thank you for subscribing,Global,Success & Confirmation,Success message body text. Appreciative and welcoming tone for new subscribers.
+Your subscription is active,Global,Status & State,Status indicator for subscription state. Use in account settings and profile areas.
+Unlock Premium Features,Global,Subscription & Billing,Paywall CTA. Emphasizes value and access. Use in freemium conversion flows.
+Upgrade Now,Global,Subscription & Billing,CTA to move from free to paid plan. Direct and action-oriented. Use in upsell moments.
+Downgrade Plan,Global,Subscription & Billing,Use in subscription management to move to lower tier. Neutral tone without negative language.
+Change Plan,Global,Subscription & Billing,Neutral option to modify subscription tier. Use when up/down direction isn't specified yet.
+Restore Purchase,iOS,Subscription & Billing,iOS-specific. Use to restore previously purchased subscriptions. Important for App Store compliance.
+Restore Purchase,Android,Subscription & Billing,Android-specific. Use to restore previously purchased subscriptions. Important for Play Store compliance.
+View Billing History,Global,Subscription & Billing,Use to access past invoices and payment records. Clear and descriptive action.
+Download Invoice,Global,Subscription & Billing,Action to get receipt/invoice PDF. Use in billing history screens.
+Resubscribe,Global,Subscription & Billing,Use when user previously canceled. Encourages return. More friendly than 'Subscribe Again'.
+Submit,Global,Actions & Commands,Generic form submission. Use when 'Save' or specific action words don't apply. Clear and direct.
+Send,Global,Actions & Commands,Use for messaging and email actions. Action-oriented and immediate. Common in communication features.
+Share,Global,Actions & Commands,Use for social sharing or sending content to others. Universal action across platforms.
+Copy,Global,Actions & Commands,Copy content to clipboard. Use with clear feedback (toast/snackbar) that action succeeded.
+Copied!,Global,Progress & Feedback,Success feedback after copy action. Brief and confirmatory. Show in toast/snackbar for 2-3 seconds.
+Download,Global,Actions & Commands,Action to save content locally. Use for files, images, documents. Clear and familiar.
+Upload,Global,Actions & Commands,Action to add files from device. Pair with file type limitations (images, PDFs, etc).
+Edit,Global,Actions & Commands,Modify existing content. Use in lists and detail views. Clear call-to-action for updates.
+Delete,Global,Actions & Commands,Destructive action. Always confirm before executing. Use clear language without euphemisms.
+Remove,Global,Actions & Commands,Less permanent than Delete. Use for removing items from lists or collections (not permanent deletion).
+Add,Global,Actions & Commands,Create or append new items. Use in lists, collections, forms. Positive and constructive action.
+Create,Global,Actions & Commands,Start new item or project. More formal than 'Add'. Use for significant creation actions.
+New,Global,Actions & Commands,Prefix for creation actions. Example: 'New Message', 'New Document'. Short and versatile.
+Search,Global,Actions & Commands,Action or placeholder for search inputs. Universal and instantly recognizable.
+Filter,Global,Actions & Commands,Refine results by criteria. Use in lists and search. Pair with clear filter indicators.
+Sort,Global,Actions & Commands,Reorder content by criteria. Use in lists with multiple sort options (date, name, price).
+Apply,Global,Actions & Commands,Confirm selections (filters, settings). Use after making choices to execute changes.
+Clear,Global,Actions & Commands,Reset selections or filters. Use to return to default state. Neutral recovery action.
+Reset,Global,Actions & Commands,Return to original state or defaults. More comprehensive than 'Clear'. Use in settings.
+Undo,Global,Actions & Commands,Reverse last action. Provide immediately after destructive actions. Builds user confidence.
+Redo,Global,Actions & Commands,Reapply undone action. Use in editing contexts. Pair with Undo functionality.
+Refresh,iOS,Actions & Commands,Reload current content or page. Use pull-to-refresh or explicit button. Clear update action.
+Refresh,Android,Actions & Commands,Reload current content or page. Use pull-to-refresh or explicit button. Clear update action.
+Refresh,Web,Actions & Commands,Reload current content or page. Use refresh button or keyboard shortcut. Clear update action.
+Loading,Global,Progress & Feedback,Progress indicator text. Use with spinner or skeleton screens. Keep user informed.
+Loading...,Global,Progress & Feedback,Alternative with ellipsis. Suggests ongoing process. Use with animated indicators.
+Saving,Global,Progress & Feedback,Feedback during save operations. Use with progress indicators. Reassures user.
+Saved,Global,Progress & Feedback,Success confirmation after save. Brief feedback (2-3 seconds). Positive reinforcement.
+Success!,Global,Progress & Feedback,Generic success message. Use with checkmark icon. Celebrate completed actions.
+Error,Global,Errors & Alerts,Problem indicator. Always follow with specific explanation and recovery path.
+Warning,Global,Errors & Alerts,Caution indicator for non-critical issues. Use amber/yellow color. Provide context.
+Info,Global,Errors & Alerts,Informational message. Neutral tone. Use for helpful tips and non-urgent notifications.
+Note,Global,Help & Support,Additional information prefix. Example: 'Note: Changes take effect immediately'.
+Tip,Global,Help & Support,Helpful suggestion. Use in empty states and onboarding. Friendly educational tone.
+Help,Global,Help & Support,Access to support and documentation. Use in navigation and contextual help icons.
+Settings,Global,Settings & Account,App configuration area. Common in navigation. Universal and immediately recognized.
+Profile,Global,Settings & Account,User account and personal information. Use in navigation and account areas.
+Account,Global,Settings & Account,User account management. More formal than 'Profile'. Use for business apps.
+Notifications,Global,Settings & Account,Alert preferences and history. Use in settings. Clear descriptor for alerts.
+Privacy,Global,Settings & Account,Data and privacy settings. Critical for user trust. Use clear, accessible language.
+Security,Global,Settings & Account,Account protection settings. Use for password, 2FA, login history. Builds trust.
+Preferences,Global,Settings & Account,User customization options. More technical than 'Settings'. Use in power-user features.
+About,Global,Settings & Account,App information (version, legal, credits). Use in settings footer. Informational.
+Terms of Service,Global,Legal & Compliance,Legal agreement link. Required for compliance. Use in footer and signup flows.
+Privacy Policy,Global,Legal & Compliance,Data handling policy link. Required for compliance. Use in footer and signup flows.
+Yes,Global,Dialogs & Confirmations,Affirmative response in dialogs. Simple and clear. Use in confirmation prompts.
+No,Global,Dialogs & Confirmations,Negative response in dialogs. Direct and clear. Use in confirmation prompts.
+OK,Global,Dialogs & Confirmations,Acknowledgment in alerts. Universal understanding. Platform convention for single-button alerts.
+Got It,Global,Dialogs & Confirmations,Casual acknowledgment. Friendlier than 'OK'. Use for tips and informational messages.
+Dismiss,Global,Dialogs & Confirmations,Close notification or message. Neutral action. Clear that content is being removed.
+Confirm,Global,Dialogs & Confirmations,Verify action before execution. Use in destructive or significant actions. Clear intention.
+Are you sure?,Global,Dialogs & Confirmations,Confirmation prompt for destructive actions. Always follow with specific consequences.
+Oops!,Global,Errors & Alerts,Friendly error headline. Humanizes error experience. Follow with clear explanation.
+No results,Global,Empty States,Empty state for search/filter. Suggest alternatives or adjusting criteria.
+Nothing here yet,Global,Empty States,Empty state for new users. Encourage first action. Add helpful context or CTA.
+Coming soon,Global,Status & State,Feature announcement. Builds anticipation. Use in roadmap or locked features.
+Optional,Global,Forms & Input,Mark non-required form fields. Reduces pressure. Use sparingly (mark required instead).
+Required,Global,Forms & Input,Mark mandatory form fields. Use asterisk (*) or 'Required' label. Be clear about necessity.
+Email address,Global,Forms & Input,Form field label. Specific and clear. Better than just 'Email' for accessibility.
+Password,Global,Forms & Input,Form field label. Use with secure input. Provide visibility toggle and requirements.
+Confirm password,Global,Forms & Input,Password verification field. Use in signup and password change. Prevent typos.
+Show password,Global,Forms & Input,Toggle secure input visibility. Use eye icon. Helps user verify input.
+Hide password,Global,Forms & Input,Toggle secure input back to hidden. Use eye-slash icon. Privacy protection.
+Forgot password?,Global,Forms & Input,Password recovery link. Place below password field. Question mark adds approachability.
+Reset password,Global,Authentication,Password recovery action. Use in password reset flows. Clear and direct.
+Change password,Global,Account Management,Update existing password. Use in security settings. Different from 'Reset'.
+Full name,Global,Forms & Input,Form field for complete name. Better than separate first/last for international users.
+First name,Global,Forms & Input,Form field. Use only when you specifically need separate name parts.
+Last name,Global,Forms & Input,Form field. Use only when you specifically need separate name parts.
+Phone number,Global,Forms & Input,Form field. Use appropriate input type (tel). Specify format if needed.
+Date of birth,Global,Forms & Input,Form field. Use date picker. Explain why you need it (age verification, etc).
+Address,Global,Forms & Input,Location form field. Consider using address autocomplete. Reduce input friction.
+City,Global,Forms & Input,Location form field. Part of address collection. Clear and standard.
+State,Global,Forms & Input,Location form field (US). Use 'Province' or 'Region' for international. Consider dropdown.
+Zip code,Global,Forms & Input,Postal code field (US). Use 'Postal code' for international. Use numeric input.
+Country,Global,Forms & Input,Location form field. Use dropdown with search. Consider auto-detection.
+Select,Global,Selection & Display,Dropdown or picker action. Use when choosing from predefined options.
+Choose,Global,Selection & Display,Alternative to 'Select'. More casual. Use in onboarding and preference flows.
+Pick,Global,Selection & Display,Informal selection action. Use in casual contexts. Example: 'Pick a color'.
+All,Global,Selection & Display,Select all items. Use in multi-select interfaces. Pair with 'None' for deselection.
+None,Global,Selection & Display,Deselect all items. Use in multi-select interfaces. Clear reset action.
+View All,Global,Selection & Display,See complete list or collection. Use when showing preview/subset. Expands content.
+See More,Global,Selection & Display,Expand truncated content. Use in feeds and descriptions. Indicates additional content.
+See Less,Global,Selection & Display,Collapse expanded content. Pair with 'See More'. Returns to preview state.
+Show More,Global,Selection & Display,Alternative to 'See More'. Reveals additional content or options.
+Show Less,Global,Selection & Display,Alternative to 'See Less'. Hides additional content or options.
+Next,Global,Navigation & Flow,Progress to next step or item. Use in multi-step flows and carousels.
+Previous,Global,Navigation & Flow,Return to prior step or item. Use in multi-step flows and carousels.
+Back,iOS,Navigation & Flow,Navigate to previous screen. iOS convention with back arrow. Simple and universal.
+Back,Android,Navigation & Flow,Navigate to previous screen. Material back button. Simple and universal.
+Back,Web,Navigation & Flow,Navigate to previous screen. Browser back or custom navigation. Simple and universal.
+Home,Global,Navigation & Flow,Return to main screen. Use in navigation. Universal home concept.
+Menu,Global,Navigation & Flow,Open navigation drawer or menu. Use hamburger icon. Standard pattern.
+More,iOS,Navigation & Flow,Additional options or actions. Three-dot menu (•••). Reveals secondary actions.
+More,Android,Navigation & Flow,Additional options or actions. Three-dot menu (⋮). Reveals secondary actions.
+More,Web,Navigation & Flow,Additional options or actions. Three-dot menu (•••). Reveals secondary actions.
+Feedback,Global,Help & Support,User input or bug reporting. Use in settings or help. Shows you value input.
+Rate us,iOS,Social & Community,App store rating request. Use after positive interactions. Builds app credibility.
+Rate us,Android,Social & Community,App store rating request. Use after positive interactions. Builds app credibility.
+Invite friends,Global,Social & Community,Referral or sharing action. Use in social features. Encourages growth.
+Log out,Global,Account Management,End session. Use in settings. Clear and expected action for account exit.
+Sign out,Global,Account Management,Alternative to 'Log out'. Matches 'Sign in' for consistency. Preferred in modern apps.
+Disconnect,Global,Account Management,End connection to service or account. Use for third-party integrations.
+Connect,Global,Account Management,Link to external service or account. Use for integrations and social connections.
+Link account,Global,Account Management,Connect existing account. Use in integration flows. Clear association action.
+Unlink account,Global,Account Management,Disconnect associated account. Confirm before executing. Reversible action.
+Enable,Global,Settings & Toggles,Turn on feature or setting. Binary state. Pair with 'Disable' for clarity.
+Disable,Global,Settings & Toggles,Turn off feature or setting. Binary state. Clear opposite of 'Enable'.
+Turn on,Global,Settings & Toggles,Activate feature. More conversational than 'Enable'. Use for user-facing features.
+Turn off,Global,Settings & Toggles,Deactivate feature. More conversational than 'Disable'. Use for user-facing features.
+On,Global,Settings & Toggles,Toggle state indicator. Simple binary state. Use in switch controls.
+Off,Global,Settings & Toggles,Toggle state indicator. Simple binary state. Use in switch controls.
+Active,Global,Status & State,Status indicator for enabled state. Use for subscriptions, features, accounts.
+Inactive,Global,Status & State,Status indicator for disabled state. Neutral term without negative connotation.
+Available,Global,Status & State,Status for ready/accessible items. Use in inventory, scheduling, feature availability.
+Unavailable,Global,Status & State,Status for inaccessible items. Explain why when possible. Suggest alternatives.
+Online,Global,Status & State,Connection or user status. Real-time indicator. Use in messaging and collaboration.
+Offline,Global,Status & State,Disconnected status. Provide offline capabilities when possible. Clear status.
+Draft,Global,Status & State,Unsent or unpublished status. Indicates work in progress. Use in content creation.
+Published,Global,Status & State,Live content status. Opposite of 'Draft'. Indicates public visibility.
+Pending,Global,Status & State,Awaiting action or approval. Temporary state. Provide expected timeline.
+Approved,Global,Status & State,Positive status for accepted items. Use in review workflows. Clear resolution.
+Declined,Global,Status & State,Rejected status. Neutral term without blame. Explain reason when possible.
+Completed,Global,Status & State,Finished status. Positive completion. Use for tasks, orders, processes.
+In progress,Global,Status & State,Ongoing status. Indicates active work. Provide progress indicators when possible.
+Expired,Global,Status & State,Time-limited item past deadline. Use for trials, offers, sessions. Clear finality.
+Canceled,Global,Status & State,User-terminated status. Neutral without blame. Use for orders, subscriptions, bookings.
+Scheduled,Global,Status & State,Future-planned status. Shows date/time. Use for posts, payments, events.
+Today,Global,Time & Date,Time reference for current day. Use in calendars and date filters. Immediate recognition.
+Yesterday,Global,Time & Date,Time reference for prior day. Use in activity feeds and history. Clear temporal marker.
+Tomorrow,Global,Time & Date,Time reference for next day. Use in scheduling and reminders. Future indicator.
+Now,Global,Time & Date,Immediate time reference. Use for real-time actions. Sense of urgency and immediacy.
+Later,Global,Time & Date,Deferred time option. Use in snooze and reminder features. Casual and flexible.
+Recent,Global,Time & Date,Time-based filter for latest items. Use in lists and search. Shows freshness.
+All time,Global,Time & Date,Complete history filter. Shows everything regardless of date. Comprehensive view.
+Custom,Global,Options & Choices,User-defined option. Use when predefined options don't cover needs. Flexibility.
+Default,Global,Options & Choices,Standard or original setting. Reset option. Clear baseline reference.
+Recommended,Global,Options & Choices,Suggested option or setting. Guides user choice. Helpful without forcing.
+Popular,Global,Options & Choices,Frequently chosen option. Social proof. Use in selection interfaces.
+New,Global,Labels & Badges,Recently added content or feature. Draws attention. Time-limited indicator.
+Updated,Global,Labels & Badges,Recently modified content. Shows freshness. Use in change logs and content lists.
+Free,Global,Pricing & Tiers,No-cost option or tier. Emphasizes value. Use in pricing and feature labels.
+Premium,Global,Pricing & Tiers,Paid tier or locked feature. Aspirational term. Use in upgrade prompts.
+Pro,Global,Pricing & Tiers,Advanced tier designation. Professional connotation. Use in tiered offerings.
+Basic,Global,Pricing & Tiers,Entry-level tier. Neutral descriptor without negative connotation.
+Plus,Global,Pricing & Tiers,Mid-tier option. Indicates extra features. Common tier naming convention.
