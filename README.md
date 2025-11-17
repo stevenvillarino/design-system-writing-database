@@ -52,17 +52,17 @@ Speed Rail is a powerful Figma plugin that helps design teams maintain consisten
 ### System Architecture
 
 ```mermaid
-graph TD;
-    A[Figma Plugin Shell] --> B[UI (React/Vite)];
-    B --> C[Plugin Backend (code.js)];
-    C --> D[Airtable API];
-    D -->|Terms + Metadata| E[Local Term Cache];
-    B --> F[Term Browser];
-    B --> G[Validation Scan];
-    F --> H[Filter by Platform];
-    H --> I[Insert Term into Canvas];
-    G --> J[Scan Selected Frame];
-    J --> K[Highlight Unapproved Terms];
+graph TD
+    A[Figma Plugin Shell] --> B[UI React Vite]
+    B --> C[Plugin Backend code.js]
+    C --> D[Airtable API]
+    D -->|Terms + Metadata| E[Local Term Cache]
+    B --> F[Term Browser]
+    B --> G[Validation Scan]
+    F --> H[Filter by Platform]
+    H --> I[Insert Term into Canvas]
+    G --> J[Scan Selected Frame]
+    J --> K[Highlight Unapproved Terms]
 ```
 
 ### File Structure
