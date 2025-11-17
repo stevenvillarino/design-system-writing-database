@@ -126,85 +126,39 @@ Before installing Speed Rail, ensure you have:
   - Example schema: Content, Platform, Examples + Explanation
 - **Development Environment** (for contributors): Node.js and npm
 
-## 🛠 Installation Instructions
+## 🛠 Quick Setup (New Machine)
 
-### For Team Members (Using the Plugin)
+1) **Install dependencies**
+```bash
+npm install
+```
 
-1. **Get Plugin Access**
-   ```
-   Ask your team admin to share the Speed Rail plugin with you in Figma
-   ```
+2) **Create your local secret file**
+```bash
+cp code.template.js code.js
+```
+Open `code.js` and replace:
+- `{{AIRTABLE_PAT}}` → your Airtable Personal Access Token (starts with `pat`)
+- `{{AIRTABLE_BASE_ID}}` → your Airtable Base ID (starts with `app`)
 
-2. **Open Figma**
-   - Go to any Figma file
-   - Navigate to `Plugins` in the menu
-   - Find "Speed Rail" in your plugins list
+3) **Build the plugin UI**
+```bash
+npm run build
+```
+This creates `ui.html` that Figma uses.
 
-3. **Launch the Plugin**
-   - Click on Speed Rail
-   - The plugin will automatically load the UX Writing database
+4) **Load in Figma**
+- Open Figma Desktop
+- `Plugins → Development → Import plugin from manifest`
+- Choose this repo’s `manifest.json`
+- Launch the plugin
 
-4. **Start Using**
-   - Browse approved UX writing terms
-   - Filter by platform or use the action buttons
+### Troubleshooting
+- **`tsc: command not found`** → Run `npm install` to install TypeScript.
+- **`code.js not found`** → Make sure you ran `cp code.template.js code.js` and filled in your keys.
+- **No data shows** → Double-check `tableName` and field names in `code.js` match your Airtable.
 
-### For Developers (Setting Up Development)
-
-1. **Clone the Repository**
-   ```bash
-   git clone <repository-url>
-   cd design-system-writing-database
-   ```
-
-2. **Install Dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Configure Database Connection**
-
-   Create your local configuration file:
-   ```bash
-   cp code.template.js code.js
-   ```
-
-   Edit `code.js` and add your Airtable credentials:
-   ```javascript
-   const DATABASES = {
-       commonTerms: {
-           apiKey: 'patXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-           baseId: 'appXXXXXXXXXXXXXX',
-           tableName: 'Common Terms',
-           displayName: 'Speed Rail',
-           fields: {
-               term: 'Content',
-               platform: 'Platform',
-               explanation: 'Examples & Explanation'
-           }
-       }
-   }
-   ```
-
-   > **Note**: `code.js` is gitignored to protect your API keys. See [LOCAL_SETUP.md](./LOCAL_SETUP.md) for detailed setup instructions.
-
-4. **Build the Plugin UI**
-   ```bash
-   npm run build
-   ```
-
-   This compiles the React + TypeScript UI and bundles everything into `ui.html`.
-
-5. **Import into Figma**
-   - Open Figma Desktop App
-   - Go to `Plugins` → `Development` → `Import plugin from manifest`
-   - Select the `manifest.json` file from this project
-   - Click "Save"
-
-6. **Test the Plugin**
-   - Create a new Figma file
-   - Run the plugin from `Plugins` → `Development` → `Speed Rail`
-
-   > **Tip**: After making code changes, run `npm run build` and reload the plugin in Figma.
+**Tip:** After making code changes, rerun `npm run build` and reload the plugin in Figma.
 
 ## 📖 Usage Guide
 

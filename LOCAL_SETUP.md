@@ -1,42 +1,46 @@
 # Local Setup Instructions
 
-## Quick Setup (2 minutes)
+## Quick Setup (new machine)
 
-### Step 1: Create Your Local Config
+1) Install dependencies (installs `tsc`, Vite, etc.)
+```bash
+npm install
+```
 
-Copy the template file to create your local configuration:
-
+2) Create your local config (gitignored)
 ```bash
 cp code.template.js code.js
 ```
 
-### Step 2: Add Your Credentials
-
-Edit `code.js` and replace the placeholders:
-
+3) Add your Airtable credentials in `code.js`
 ```javascript
 const DATABASES = {
     commonTerms: {
-        apiKey: 'YOUR_AIRTABLE_PAT_HERE', // Your actual PAT
-        baseId: 'YOUR_BASE_ID_HERE',       // Your actual Base ID
-        // ... rest stays the same
+        apiKey: 'patXXXXXXXX...',      // Your Airtable PAT
+        baseId: 'appXXXXXXXXXXXXXX',   // Your Base ID
+        tableName: 'Common Terms',
+        fields: {
+            term: 'Content',
+            platform: 'Platform',
+            type: 'Type',
+            explanation: 'Examples & Explanation'
+        }
     }
 };
 ```
+- Get PAT: https://airtable.com/account (starts with `pat`)
+- Get Base ID: https://airtable.com/api (starts with `app`)
 
-**Your Credentials:**
-- **API Key (PAT):** Get from https://airtable.com/account
-- **Base ID:** Get from https://airtable.com/api (in the URL: `appXXXXXXXXXXXXXX`)
-
-**Example:**
-```javascript
-apiKey: 'patXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-baseId: 'appXXXXXXXXXXXXXX',
+4) Build the plugin bundle
+```bash
+npm run build
 ```
+This outputs `ui.html` that Figma loads.
 
-### Step 3: Verify
-
-Your `code.js` file is automatically ignored by git (see `.gitignore`), so your secrets stay local.
+5) Load into Figma Desktop
+- `Plugins → Development → Import plugin from manifest`
+- Pick `manifest.json` in this repo
+- Launch the plugin
 
 ---
 
@@ -87,14 +91,15 @@ chmod +x build-config.sh
 
 ## Troubleshooting
 
-**"code.js not found" error in Figma:**
-- Make sure you ran `cp code.template.js code.js`
-- Check that `code.js` exists in your project directory
+**"code.js not found":**
+- Ensure `code.js` exists (from the `cp` command) and lives in the repo root.
 
-**"No terms found" error:**
-- Verify your API key is correct (starts with `pat`)
-- Verify your Base ID is correct (starts with `app`)
-- Check that table name is exactly "Common Terms"
+**"tsc: command not found":**
+- Rerun `npm install` to install dev deps.
+
+**"No terms found":**
+- Verify PAT (`pat...`) and Base ID (`app...`)
+- Confirm `tableName` and field names match your Airtable schema exactly.
 
 ---
 
