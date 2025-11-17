@@ -3,22 +3,20 @@
 ### AI-Powered Content Database for Figma
 *Your design system for words.*
 
-Speed Rail is a powerful Figma plugin that helps design teams maintain consistent, approved language across their designs. Built with AI-first principles, Speed Rail connects to databases (Airtable) to provide instant access to approved terms, automatically validate content, and generate design variations with zero manual work.
+Speed Rail is a powerful Figma plugin that helps design teams maintain consistent, approved language across their designs. Built with AI-first principles, Speed Rail connects to databases (Airtable) to provide instant access to approved terms and automatically validate content.
 
 **The Problem:** Designers waste hours searching for approved copy, unapproved terms slip through to production, and content reviews become bottlenecks.
 
-**The Solution:** Speed Rail delivers approved, compliant copy directly in Figma—with AI-powered suggestions (coming soon), real-time validation, and instant mock generation.
+**The Solution:** Speed Rail delivers approved, compliant copy directly in Figma—with AI-powered suggestions (coming soon) and real-time validation.
 
 ## 🚀 Key Features
 
 ### Core Features (Available Now)
 - **🤖 AI-Ready Architecture**: Built to support AI-powered content suggestions (roadmap)
 - **✅ Content Validation**: Scan frames to highlight unapproved terms in red automatically
-- **🎨 Mock Generation**: Create 10, 20, 50+ design variations from one template in seconds
 - **📱 Platform Filtering**: Filter content by platform (iOS, Android, Web, etc.)
 - **🔄 Real-time Sync**: Changes in your database reflect instantly in Figma
 - **🗄️ Multi-Database Support**: Switch between multiple content databases seamlessly
-- **🎯 Smart Font Loading**: Automatically loads fonts used in templates for mock generation
 
 ### Coming Soon (See [ROADMAP.md](./ROADMAP.md))
 - **🤖 AI Content Suggestions**: Context-aware term recommendations based on component type
@@ -39,7 +37,6 @@ Speed Rail is a powerful Figma plugin that helps design teams maintain consisten
 - 💰 **75% cheaper**: $15-49/month vs. $250-2,000/month
 - ⏱️ **100x faster setup**: 5 minutes vs. 2-4 weeks
 - 🎯 **Design-first**: Built for product designers, not writers
-- 🚀 **Mock generation**: Unique feature that saves hours daily
 
 [See full competitive analysis →](./COMPETITIVE_ANALYSIS.md)
 
@@ -56,28 +53,19 @@ Speed Rail is a powerful Figma plugin that helps design teams maintain consisten
 
 ```mermaid
 graph TD
-    A[Figma Plugin] --> B[Speed Rail UI]
-    B --> C[UX Writing Database]
+    A[Figma Plugin Shell] --> B[UI (React/Vite)]
+    B --> C[Plugin Backend (code.js)]
+    C --> D[Airtable API]
 
-    C --> D[Airtable API<br/>Content Field]
+    D -->|Terms + Metadata| E[Local Term Cache]
+    B --> F[Term Browser]
+    B --> G[Validation Scan]
 
-    B --> E[Content Validation]
-    B --> F[Mock Generation]
-    B --> G[Term Browser]
+    F --> H[Filter by Platform]
+    H --> I[Insert Term into Canvas]
 
-    E --> H[Scan Selected Frame]
-    H --> I[Highlight Invalid Terms]
-
-    I --> M[Find Template Placeholders]
-    M --> N[Load Required Fonts]
-    N --> O[Generate Variations]
-
-    J --> P[Filter by Platform]
-    P --> Q[Insert into Canvas]
-
-    F --> R[Terms List]
-    G --> R
-    R --> P
+    G --> J[Scan Selected Frame]
+    J --> K[Highlight Unapproved Terms]
 ```
 
 ### File Structure
@@ -175,30 +163,15 @@ This creates `ui.html` that Figma uses.
    - Invalid terms will be highlighted in red
    - Click "Go to layer" next to any invalid term to jump directly to that text layer in Figma
 
-3. **Generate Mocks**
-   - Create a template with placeholder text `{{Content}}` or layer names
-   - Select your template
-   - Click "🚀 Generate Mocks from Template"
-   - Multiple variations will be created automatically
-
 ### Advanced Features
-
-#### Template Placeholders
-Speed Rail supports two types of placeholders:
-
-1. **Text Content**: `"Hello {{Content}}"` → `"Hello [Approved Term]"`
-2. **Layer Names**: Layer named `{{Content}}` → Content becomes `"[Approved Term]"`
-
-#### Font Handling
-The plugin automatically:
-- Detects all fonts used in your template
-- Loads them before generating mocks
-- Falls back to Inter Regular if fonts fail to load
 
 #### Platform Filtering
 - Filter terms by platform (iOS, Android, Web, etc.)
 - Platform options are dynamically loaded from your Airtable data
 - "All Platforms" option shows all approved terms
+
+#### Search
+- Use the search box to filter terms by content, explanation, type, or platform while you browse.
 
 ## 🔧 Configuration
 
@@ -338,12 +311,11 @@ Speed Rail is positioned uniquely in the content design tools market:
 - 75-95% cheaper
 - 100x faster setup (5 minutes vs. weeks)
 - Simpler, no enterprise complexity
-- Unique mock generation feature
 
 **🆚 vs. Writer.com**
 - Design-first (not writing-first)
 - Context-aware for UI components
-- Mock generation built-in
+- Built into Figma for instant insert/validate
 - More affordable for small teams
 
 **🆚 vs. Manual Process**
