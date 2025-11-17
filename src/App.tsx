@@ -62,10 +62,6 @@ function App() {
     sendMessage({ type: 'scan-frame' });
   };
 
-  const handleGenerateMocks = () => {
-    sendMessage({ type: 'create-mocks' });
-  };
-
   const handleSelectNode = (nodeId: string) => {
     console.log('Sending select-node message with nodeId:', nodeId);
     sendMessage({ type: 'select-node', nodeId });
@@ -95,10 +91,7 @@ function App() {
         onChange={handlePlatformChange}
       />
       <SearchInput value={searchQuery} onChange={setSearchQuery} />
-      <ActionButtons
-        onScanFrame={handleScanFrame}
-        onGenerateMocks={handleGenerateMocks}
-      />
+      <ActionButtons onScanFrame={handleScanFrame} />
       {invalidTerms.length > 0 && (
         <ValidationDisplay
           invalidTerms={invalidTerms}

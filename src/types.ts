@@ -18,5 +18,4 @@ export type UIMessageType =
   | { type: 'platform-changed'; platform: string }
   | { type: 'create-text'; text: string }
   | { type: 'scan-frame' }
-  | { type: 'create-mocks' }
   | { type: 'select-node'; nodeId: string };
