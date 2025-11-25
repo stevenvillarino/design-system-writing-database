@@ -44,6 +44,42 @@ This outputs `ui.html` that Figma loads.
 
 ---
 
+## Updating on an Existing Machine
+
+**IMPORTANT:** When you `git pull` updates, `code.js` won't auto-update because it's git-ignored!
+
+If the plugin isn't showing new features or updated data after pulling:
+
+1. **Save your credentials first** (optional but recommended)
+
+   ```bash
+   # Grab your current credentials
+   grep -E "apiKey:|baseId:" code.js
+   ```
+
+1. **Copy the updated template**
+
+   ```bash
+   cp code.template.js code.js
+   ```
+
+1. **Re-add your credentials** in `code.js`
+
+   - Replace `{{AIRTABLE_PAT}}` with your token
+   - Replace `{{AIRTABLE_BASE_ID}}` with your base ID
+
+1. **Rebuild**
+
+   ```bash
+   npm run build
+   ```
+
+1. **Reload the plugin in Figma**
+
+**Why this happens:** `code.template.js` gets updated with new features, but `code.js` (which contains your secrets) stays unchanged because it's in `.gitignore`.
+
+---
+
 ## Why This Setup?
 
 - **Security:** Your API token never gets committed to git
