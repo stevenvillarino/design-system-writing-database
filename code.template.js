@@ -20,44 +20,58 @@ let currentDatabase = 'commonTerms';
 let currentPlatform = '';
 let terms = [];
 
-// Fetch terms from selected database
+// Fetch terms from selected database (handles pagination)
 async function fetchTerms(platform = '') {
     try {
         const dbConfig = DATABASES[currentDatabase];
-        const url = `https://api.airtable.com/v0/${dbConfig.baseId}/${encodeURIComponent(dbConfig.tableName)}`;
-        console.log('Fetching from URL:', url);
-        
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${dbConfig.apiKey}`,
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        });
-        
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.error('Airtable API Error:', {
-                status: response.status,
-                statusText: response.statusText,
-                body: errorText,
-                url: url
+        const baseUrl = `https://api.airtable.com/v0/${dbConfig.baseId}/${encodeURIComponent(dbConfig.tableName)}`;
+        console.log('Fetching from URL:', baseUrl);
+
+        var allRecords = [];
+        var offset = null;
+
+        // Fetch all pages of records (Airtable returns max 100 per page)
+        do {
+            var url = offset ? baseUrl + '?offset=' + offset : baseUrl;
+
+            var response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + dbConfig.apiKey,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
             });
-            throw new Error(`Failed to fetch terms: ${response.status} ${response.statusText}`);
-        }
-        
-        const data = await response.json();
-        console.log('Received data:', data);
-        
-        if (!data.records || !Array.isArray(data.records)) {
-            console.error('Invalid data format:', data);
-            throw new Error('Invalid data format received from Airtable');
-        }
-        
-        terms = data.records.map(record => {
-            const platformField = record.fields[dbConfig.fields.platform];
-            const typeField = record.fields[dbConfig.fields.type];
+
+            if (!response.ok) {
+                var errorText = await response.text();
+                console.error('Airtable API Error:', {
+                    status: response.status,
+                    statusText: response.statusText,
+                    body: errorText,
+                    url: url
+                });
+                throw new Error('Failed to fetch terms: ' + response.status + ' ' + response.statusText);
+            }
+
+            var data = await response.json();
+            console.log('Received page of data:', data.records ? data.records.length : 0, 'records');
+
+            if (!data.records || !Array.isArray(data.records)) {
+                console.error('Invalid data format:', data);
+                throw new Error('Invalid data format received from Airtable');
+            }
+
+            allRecords = allRecords.concat(data.records);
+            offset = data.offset; // Will be undefined when no more pages
+
+        } while (offset);
+
+        console.log('Total records fetched:', allRecords.length);
+
+        terms = allRecords.map(function(record) {
+            var platformField = record.fields[dbConfig.fields.platform];
+            var typeField = record.fields[dbConfig.fields.type];
 
             return {
                 id: record.id,
@@ -70,16 +84,17 @@ async function fetchTerms(platform = '') {
                 explanation: record.fields[dbConfig.fields.explanation]
             };
         });
-        
+
         // Get unique platforms and send to UI
-        const uniquePlatforms = [...new Set(terms.map(term => term.platform))].filter(Boolean);
-        figma.ui.postMessage({ 
-            type: 'update-platforms', 
+        var allPlatforms = terms.flatMap(function(term) { return term.platforms || []; });
+        var uniquePlatforms = Array.from(new Set(allPlatforms)).filter(Boolean);
+        figma.ui.postMessage({
+            type: 'update-platforms',
             platforms: uniquePlatforms,
             currentDatabase: DATABASES[currentDatabase].displayName
         });
-        
-        console.log('Processed terms:', terms);
+
+        console.log('Processed terms:', terms.length);
         return filterTermsByPlatform(platform);
     } catch (error) {
         console.error('Error fetching terms:', error);
